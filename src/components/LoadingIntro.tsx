@@ -56,45 +56,6 @@ const LoadingIntro = ({ onComplete }: LoadingIntroProps) => {
 
   return (
     <div className="fixed inset-0 bg-background flex items-center justify-center z-50 overflow-hidden">
-      {/* Matrix rain background */}
-      <div className="absolute inset-0">
-        {matrixChars.map((char, i) => (
-          <div
-            key={i}
-            className="absolute text-primary/20 font-mono text-sm animate-[matrix-rain_3s_linear_infinite]"
-            style={{
-              left: `${(i * 2) % 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              fontSize: `${0.5 + Math.random() * 0.5}rem`
-            }}
-          >
-            {char}
-          </div>
-        ))}
-      </div>
-
-      {/* Enhanced grid background */}
-      <div className="absolute inset-0 bg-animated-grid opacity-20" />
-      
-      {/* Animated geometric field */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute border border-primary/30 animate-float-complex cyber-border"
-            style={{
-              width: `${60 + i * 25}px`,
-              height: `${60 + i * 25}px`,
-              left: `${10 + i * 8}%`,
-              top: `${15 + i * 7}%`,
-              animationDelay: `${i * 0.3}s`,
-              clipPath: i % 3 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 
-                       i % 3 === 1 ? 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' : 
-                       'none'
-            }}
-          />
-        ))}
-      </div>
 
       {/* Central loading interface */}
       <div className="relative z-10 text-center space-y-12 card-premium p-12 rounded-lg max-w-2xl mx-6">

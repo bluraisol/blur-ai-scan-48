@@ -20,40 +20,6 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
-      {/* Advanced background effects */}
-      <div className="absolute inset-0">
-        {/* Animated mesh gradient */}
-        <div className="absolute inset-0 opacity-30" 
-             style={{ background: 'var(--gradient-mesh)' }} />
-        
-        {/* Grid pattern with animation */}
-        <div className="absolute inset-0 bg-animated-grid opacity-15" />
-        
-        {/* Radial glow */}
-        <div className="absolute inset-0" 
-             style={{ background: 'var(--gradient-hero)' }} />
-        
-        {/* Dynamic geometric shapes */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute border border-primary/20 animate-float-complex cyber-border"
-              style={{
-                width: `${40 + i * 20}px`,
-                height: `${40 + i * 20}px`,
-                left: `${5 + (i * 7) % 90}%`,
-                top: `${10 + (i * 11) % 80}%`,
-                animationDelay: `${i * 0.4}s`,
-                clipPath: i % 4 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 
-                         i % 4 === 1 ? 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' :
-                         i % 4 === 2 ? 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' :
-                         'none'
-              }}
-            />
-          ))}
-        </div>
-      </div>
 
       {/* Main content */}
       <div className="relative z-10 text-center space-y-16 px-6 max-w-7xl mx-auto">
@@ -125,48 +91,73 @@ const HeroSection = () => {
           })}
         </div>
 
-        {/* CTA Section with advanced design */}
-        <div className="space-y-8">
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        {/* Enhanced CTA Section */}
+        <div className="space-y-12">
+          {/* Main CTA Button */}
+          <div className="flex justify-center">
             <a 
               href="https://t.me/blurcryptobot" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group relative px-10 py-5 bg-gradient-to-r from-primary to-primary-bright 
-                       text-background font-mono tracking-wide text-lg font-bold
-                       rounded-lg hover:shadow-2xl transform hover:scale-105 
-                       transition-all duration-300 cyber-border overflow-hidden block"
+              className="group relative px-12 py-6 bg-gradient-to-r from-primary via-primary-bright to-primary 
+                       text-background font-mono tracking-wide text-xl font-bold
+                       rounded-2xl hover:shadow-2xl transform hover:scale-105 
+                       transition-all duration-500 cyber-border overflow-hidden
+                       before:absolute before:inset-0 before:bg-gradient-to-r 
+                       before:from-primary-bright before:to-primary before:opacity-0 
+                       before:transition-opacity before:duration-500 hover:before:opacity-100"
             >
-              <span className="relative z-10">EXPLORE BLUR</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-bright to-primary 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10 flex items-center space-x-3">
+                <Zap className="w-6 h-6" />
+                <span>EXPLORE BLUR</span>
+              </span>
             </a>
-            
-            {/* <button className="group px-10 py-5 border-2 border-primary text-primary 
-                             font-mono tracking-wide text-lg font-bold rounded-lg
-                             hover-electric transition-all duration-300 relative overflow-hidden">
-              <span className="relative z-10">VIEW ANALYTICS</span>
-              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 
-                            transition-opacity duration-300" />
-            </button> */}
           </div>
 
-          {/* Live data stream */}
-          <div className="flex justify-center">
-            <div className="glass-effect px-8 py-4 rounded-full border border-primary/30">
-              <div className="flex items-center space-x-6 text-sm font-mono">
-                <div className="flex items-center space-x-2">
-                  <div className="w-4h-2 bg-primary rounded-full animate-pulse" />
-                  <span className="text-muted-foreground">SCANNING:</span>
-                  <span className="text-primary font-bold">{scanningCount.toLocaleString()}</span>
-                  <span className="text-muted-foreground">COINS</span>
+          {/* Live Statistics Dashboard */}
+          <div className="max-w-4xl mx-auto">
+            <div className="card-premium p-8 rounded-2xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Scanning Status */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
+                    <span className="text-sm font-mono text-primary font-bold tracking-wider">
+                      LIVE SCANNING
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-baseline space-x-2">
+                      <span className="text-3xl font-black font-mono text-electric">
+                        {scanningCount.toLocaleString()}
+                      </span>
+                      <span className="text-sm text-muted-foreground font-mono">COINS</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Total memecoins analyzed in real-time
+                    </p>
+                  </div>
                 </div>
-                <div className="w-px h-4 bg-border" />
-                <div className="flex items-center space-x-2">
-                  <div className="w-4 h-2 bg-success rounded-full animate-pulse" />
-                  <span className="text-muted-foreground">AI MODELS:</span>
-                  <span className="text-success font-bold">{aiModelsActive}/9</span>
-                  <span className="text-muted-foreground">ACTIVE</span>
+
+                {/* AI Models Status */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-success rounded-full animate-pulse" />
+                    <span className="text-sm font-mono text-success font-bold tracking-wider">
+                      AI SYSTEMS
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-baseline space-x-2">
+                      <span className="text-3xl font-black font-mono text-electric">
+                        {aiModelsActive}/9
+                      </span>
+                      <span className="text-sm text-muted-foreground font-mono">ACTIVE</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Neural networks operating at full capacity
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

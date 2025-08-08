@@ -14,11 +14,6 @@ const CompactFooter = () => {
 
   return (
     <footer className="relative bg-background-secondary border-t border-border overflow-hidden">
-      {/* Subtle background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-        <div className="absolute inset-0 bg-animated-grid opacity-5" />
-      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
         {/* Main footer content */}
