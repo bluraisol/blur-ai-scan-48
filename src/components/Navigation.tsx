@@ -8,10 +8,10 @@ const Navigation = () => {
 
   const navItems = [
     { id: "home", label: "MAIN", icon: Zap },
-    { id: "about", label: "TECHNOLOGY", icon: Activity },
     { id: "stats", label: "METRICS", icon: TrendingUp },
+    { id: "about", label: "TECHNOLOGY", icon: Activity },
+    { id: "modes", label: "MODES", icon: Blend },    
     { id: "pricing", label: "PRICING", icon: CircleDollarSign },
-    { id: "modes", label: "MODES", icon: Blend },
     { id: "tokenomics", label: "TOKENOMICS", icon: ScrollText },
   ];
 

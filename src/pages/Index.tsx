@@ -21,11 +21,11 @@ const Index = () => {
     <div className="relative bg-background">
       <Navigation />
       <HeroSection />
+      <StatsSection />
       <AboutSection />
       <ProcessFlowSection />
-      <StatsSection />
-      <PricingSection />
       <ModesSection />
+      <PricingSection />
       <TokenomicsSection />
       <CompactFooter />
     </div>

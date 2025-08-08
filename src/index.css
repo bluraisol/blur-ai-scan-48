@@ -145,7 +145,7 @@
   
   /* Text effects */
   .text-electric {
-    animation: electric-pulse 2s ease-in-out infinite;
+    animation: electric-pulse 5s ease-in-out infinite;
   }
   
   .text-glow {

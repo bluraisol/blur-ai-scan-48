@@ -32,8 +32,7 @@ const AboutSection = () => {
     { name: "SOLANA", category: "BLOCKCHAIN", status: "INTEGRATED" },
     { name: "TENSORFLOW", category: "AI/ML", status: "OPTIMIZED" },
     { name: "RUST", category: "PERFORMANCE", status: "NATIVE" },
-    { name: "WEBSOCKETS", category: "REAL-TIME", status: "STREAMING" },
-    { name: "REDIS", category: "CACHING", status: "ULTRA-FAST" }
+    { name: "WEBSOCKETS", category: "REAL-TIME", status: "STREAMING" }
   ];
 
   return (
@@ -118,7 +117,7 @@ const AboutSection = () => {
             <p className="text-muted-foreground">Powered by cutting-edge technologies for maximum performance</p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {techStack.map((tech, i) => (
               <div
                 key={tech.name}
@@ -126,7 +125,7 @@ const AboutSection = () => {
                 style={{ animationDelay: `${i * 0.05}s` }}
               >
                 <div className="space-y-2">
-                  <div className="text-lg font-bold font-mono text-electric group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-lg font-bold font-mono text-electric group-hover:scale-110 transition-transform duration-1000">
                     {tech.name}
                   </div>
                   <div className="text-xs text-muted-foreground">{tech.category}</div>
