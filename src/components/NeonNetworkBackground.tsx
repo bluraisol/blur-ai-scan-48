@@ -92,14 +92,12 @@ const NeonNetworkBackground = () => {
       frameCount++;
       ctx.clearRect(0, 0, w, h);
 
-      // Упрощенный фоновый градиент (только каждый 4-й кадр)
-      if (frameCount % 4 === 0) {
-        const g = ctx.createLinearGradient(0, 0, 0, h);
-        g.addColorStop(0, 'rgba(2,6,23,0.5)');
-        g.addColorStop(1, 'rgba(1,2,8,0.7)');
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, w, h);
-      }
+      // Статичный фоновый градиент без изменений
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, 'rgba(2,6,23,0.3)');
+      g.addColorStop(1, 'rgba(1,2,8,0.4)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
 
       // Оптимизированное рисование линий
       for (let i = 0; i < nodes.length; i++) {
@@ -115,8 +113,8 @@ const NeonNetworkBackground = () => {
           if (dist < LINE_DISTANCE) {
             connections++;
             const baseAlpha = (1 - dist / LINE_DISTANCE) * 0.4;
-            const pulseEffect = Math.sin(time * 0.002 + a.pulsePhase) * 0.3 + 0.7;
-            const alpha = baseAlpha * pulseEffect * a.lineIntensity;
+            const pulseEffect = Math.sin(time * 0.001 + a.pulsePhase) * 0.1 + 0.9;
+            const alpha = baseAlpha * pulseEffect * a.lineIntensity * 0.8;
             
             // Основная линия (упрощенная)
             ctx.beginPath();
@@ -125,7 +123,7 @@ const NeonNetworkBackground = () => {
             ctx.strokeStyle = COLOR_BASE + (alpha * 0.7) + ')';
             ctx.lineWidth = 1;
             
-            // Свечение только для ярких линий
+            // Уменьшенное свечение только для ярких линий
             if (alpha > 0.3) {
               ctx.shadowBlur = 6;
               ctx.shadowColor = 'rgba(30,190,255,' + (alpha * 0.4) + ')';
@@ -133,7 +131,7 @@ const NeonNetworkBackground = () => {
             ctx.stroke();
             ctx.shadowBlur = 0;
             
-            // Дополнительная линия только для самых ярких соединений
+            // Дополнительная линия только для самых ярких соединений (реже)
             if (alpha > 0.5 && frameCount % SKIP_FRAMES === 0) {
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
@@ -151,8 +149,8 @@ const NeonNetworkBackground = () => {
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
         
-        // Увеличенное движение
-        n.phase += 0.008 + (n.r * 0.002);
+        // Плавное движение без резких изменений
+        n.phase += 0.004 + (n.r * 0.001);
         n.pulsePhase += 0.004;
         
         // Более динамичное движение с волнообразными колебаниями
@@ -161,7 +159,7 @@ const NeonNetworkBackground = () => {
         n.x += n.vx + waveX;
         n.y += n.vy + waveY;
         
-        // Случайные изменения направления
+        // Редкие случайные изменения направления
         if (Math.random() < 0.002) {
           n.vx += rand(-0.1, 0.1);
           n.vy += rand(-0.1, 0.1);
@@ -177,7 +175,7 @@ const NeonNetworkBackground = () => {
         if (n.y > h + 50) n.y = -50;
 
         // Свечение только для активных узлов
-        if (n.lastConnections > 2) {
+        if (n.lastConnections > 3 && frameCount % 3 === 0) {
           drawGlow(n.x, n.y, n.r, 0.8);
         }
 
@@ -197,8 +195,8 @@ const NeonNetworkBackground = () => {
         }
       }
 
-      // Упрощенные декоративные элементы (только каждый 4-й кадр)
-      if (frameCount % 4 === 0) {
+      // Упрощенные декоративные элементы (только каждый 8-й кадр)
+      if (frameCount % 8 === 0) {
         const t = time * 0.001;
         
         // Одна волна
@@ -213,7 +211,7 @@ const NeonNetworkBackground = () => {
         ctx.stroke();
         
         // Редкие сканирующие линии
-        if (Math.random() > 0.998) {
+        if (Math.random() > 0.9995) {
           const scanX = Math.random() * w;
           ctx.beginPath();
           ctx.moveTo(scanX, 0);
@@ -242,7 +240,7 @@ const NeonNetworkBackground = () => {
 
     // Упрощенный pulse effect
     pulseInterval = setInterval(() => {
-      const centerX = w * 0.1 + Math.random() * w * 0.8;
+      const centerX = w * 0.2 + Math.random() * w * 0.6;
       const centerY = h * 0.1 + Math.random() * h * 0.8;
       ctx.save();
       const pulseGrad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 150);
@@ -252,7 +250,7 @@ const NeonNetworkBackground = () => {
       ctx.fillStyle = pulseGrad;
       ctx.fillRect(0, 0, w, h);
       ctx.restore();
-    }, 4000);
+    }, 6000);
 
     initNodes();
     animationId = requestAnimationFrame(render);
