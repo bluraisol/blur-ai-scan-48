@@ -1,38 +1,17 @@
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import { Coins, Lock, Calendar, TrendingUp } from "lucide-react";
 
 const TokenomicsSection = () => {
   const allocationData = [
-    { name: "Public", tokens: "40M", percentage: 40, cliff: "-", vesting: "-", color: "#00ffff" },
-    { name: "DEX Liquidity", tokens: "10M", percentage: 10, cliff: "Locked (24 months)", vesting: "Locked (24 months)", color: "#00e6e6" },
-    { name: "Ecosystem Incentives", tokens: "10.5M", percentage: 10.5, cliff: "-", vesting: "12", color: "#00cccc" },
-    { name: "Marketing", tokens: "9.5M", percentage: 9.5, cliff: "-", vesting: "12", color: "#00b3b3" },
-    { name: "Research & Development", tokens: "7.5M", percentage: 7.5, cliff: "1", vesting: "12", color: "#009999" },
-    { name: "Team", tokens: "6M", percentage: 6, cliff: "6", vesting: "36", color: "#008080" },
-    { name: "CEX Liquidity", tokens: "6M", percentage: 6, cliff: "-", vesting: "-", color: "#006666" },
-    { name: "KOLs", tokens: "5.5M", percentage: 5.5, cliff: "2", vesting: "6", color: "#004d4d" },
-    { name: "Advisory", tokens: "5M", percentage: 5, cliff: "2", vesting: "12", color: "#003333" }
+    { name: "Public", tokens: "40M", percentage: 40, cliff: "-", vesting: "-", color: "bg-primary" },
+    { name: "DEX Liquidity", tokens: "10M", percentage: 10, cliff: "Locked (24 months)", vesting: "Locked (24 months)", color: "bg-primary/90" },
+    { name: "Ecosystem Incentives", tokens: "10.5M", percentage: 10.5, cliff: "-", vesting: "12", color: "bg-primary/80" },
+    { name: "Marketing", tokens: "9.5M", percentage: 9.5, cliff: "-", vesting: "12", color: "bg-primary/70" },
+    { name: "Research & Development", tokens: "7.5M", percentage: 7.5, cliff: "1", vesting: "12", color: "bg-primary/60" },
+    { name: "Team", tokens: "6M", percentage: 6, cliff: "6", vesting: "36", color: "bg-primary/50" },
+    { name: "CEX Liquidity", tokens: "6M", percentage: 6, cliff: "-", vesting: "-", color: "bg-primary/40" },
+    { name: "KOLs", tokens: "5.5M", percentage: 5.5, cliff: "2", vesting: "6", color: "bg-primary/30" },
+    { name: "Advisory", tokens: "5M", percentage: 5, cliff: "2", vesting: "12", color: "bg-primary/20" }
   ];
-
-  const chartData = allocationData.map(item => ({
-    name: item.name,
-    value: item.percentage,
-    tokens: item.tokens,
-    color: item.color
-  }));
-
-  const CustomTooltip = ({ active, payload }: any) => {
-    if (active && payload && payload.length) {
-      const data = payload[0].payload;
-      return (
-        <div className="bg-background-secondary border border-primary/30 rounded-lg p-4 shadow-lg">
-          <p className="text-primary font-mono font-bold">{data.name}</p>
-          <p className="text-muted-foreground">{data.tokens} ({data.value}%)</p>
-        </div>
-      );
-    }
-    return null;
-  };
 
   return (
     <section id="tokenomics" className="relative py-32 bg-background overflow-hidden">
@@ -69,35 +48,33 @@ const TokenomicsSection = () => {
         </div>
 
         {/* Main content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Pie Chart */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          {/* Visual representation */}
           <div className="space-y-8">
             <div className="card-premium p-8 rounded-2xl">
               <h3 className="text-2xl font-black text-electric mb-8 text-center">
                 TOKEN ALLOCATION
               </h3>
               
-              <div className="h-96">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={chartData}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      outerRadius={120}
-                      fill="#8884d8"
-                      dataKey="value"
-                      stroke="hsl(var(--border))"
-                      strokeWidth={2}
-                    >
-                      {chartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip content={<CustomTooltip />} />
-                  </PieChart>
-                </ResponsiveContainer>
+              {/* Custom visual representation */}
+              <div className="space-y-4">
+                {allocationData.map((item, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-foreground font-medium">{item.name}</span>
+                      <span className="text-primary font-mono">{item.percentage}%</span>
+                    </div>
+                    <div className="relative h-3 bg-background-secondary rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full ${item.color} rounded-full transition-all duration-1000 animate-glow`}
+                        style={{ width: `${item.percentage}%` }}
+                      />
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {item.tokens}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
