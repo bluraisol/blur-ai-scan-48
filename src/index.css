@@ -68,45 +68,66 @@
     margin: 0;
     padding: 0;
     
-    /* КРАСИВЫЙ ТЕМНО-СИНИЙ ФОН С ТОКОМ ПО КАНАЛАМ */
+    /* НАСТОЯЩИЕ МИКРОСХЕМЫ С ДОРОЖКАМИ И КОМПОНЕНТАМИ */
     background-color: #0a0a0f;
     
-    /* Красивые каналы микросхем с эффектом тока */
+    /* Основные дорожки микросхемы */
     background-image: 
-      /* Горизонтальные каналы с током */
+      /* Горизонтальные дорожки */
       repeating-linear-gradient(
         0deg,
         transparent 0px,
-        transparent 48px,
-        rgba(0, 100, 255, 0.3) 49px,
-        rgba(0, 150, 255, 0.5) 50px,
-        rgba(0, 200, 255, 0.3) 51px,
-        transparent 52px,
-        transparent 100px
+        transparent 18px,
+        rgba(0, 150, 255, 0.4) 19px,
+        rgba(0, 200, 255, 0.6) 20px,
+        rgba(0, 150, 255, 0.4) 21px,
+        transparent 22px,
+        transparent 40px
       ),
-      /* Вертикальные каналы с током */
+      /* Вертикальные дорожки */
       repeating-linear-gradient(
         90deg,
         transparent 0px,
-        transparent 48px,
-        rgba(0, 100, 255, 0.2) 49px,
-        rgba(0, 150, 255, 0.4) 50px,
-        rgba(0, 200, 255, 0.2) 51px,
-        transparent 52px,
-        transparent 100px
+        transparent 18px,
+        rgba(0, 150, 255, 0.3) 19px,
+        rgba(0, 200, 255, 0.5) 20px,
+        rgba(0, 150, 255, 0.3) 21px,
+        transparent 22px,
+        transparent 40px
       ),
-      /* Узлы соединений с эффектом тока */
-      radial-gradient(circle at 100px 100px, rgba(0, 150, 255, 0.6) 2px, transparent 3px),
-      radial-gradient(circle at 200px 200px, rgba(0, 200, 255, 0.4) 1px, transparent 2px);
+      /* Компоненты микросхемы - резисторы */
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 78px,
+        rgba(0, 255, 150, 0.3) 79px,
+        rgba(0, 255, 150, 0.5) 82px,
+        rgba(0, 255, 150, 0.3) 83px,
+        transparent 84px,
+        transparent 160px
+      ),
+      /* Контактные площадки */
+      radial-gradient(circle at 40px 40px, rgba(0, 200, 255, 0.8) 1px, transparent 2px),
+      radial-gradient(circle at 120px 80px, rgba(0, 200, 255, 0.6) 1.5px, transparent 2.5px),
+      radial-gradient(circle at 80px 120px, rgba(0, 200, 255, 0.7) 1px, transparent 2px),
+      radial-gradient(circle at 160px 160px, rgba(0, 200, 255, 0.5) 2px, transparent 3px),
+      /* Переходные отверстия */
+      radial-gradient(circle at 200px 40px, rgba(0, 255, 200, 0.4) 0.5px, transparent 1px),
+      radial-gradient(circle at 40px 200px, rgba(0, 255, 200, 0.3) 0.5px, transparent 1px);
     
     background-size: 
-      100px 100px, 
-      100px 100px, 
+      40px 40px, 
+      40px 40px, 
+      160px 160px,
+      40px 40px,
+      120px 120px,
+      80px 80px,
+      160px 160px,
       200px 200px,
-      400px 400px;
+      200px 200px;
     
     background-attachment: fixed;
-    animation: circuit-current 25s linear infinite;
+    animation: circuit-current 30s linear infinite;
   }
   
   /* ВСЕ БЛОКИ ПРОЗРАЧНЫЕ НАХУЙ */
@@ -120,10 +141,10 @@
   /* Анимация тока по каналам */
   @keyframes circuit-current {
     0% { 
-      background-position: 0 0, 0 0, 0 0, 0 0; 
+      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; 
     }
     100% { 
-      background-position: 100px 100px, -100px -100px, 200px 200px, -400px -400px; 
+      background-position: 40px 40px, -40px -40px, 160px 160px, 40px 40px, 120px 120px, 80px 80px, 160px 160px, 200px 200px, -200px -200px; 
     }
   }
   
