@@ -28,6 +28,16 @@ const NeonNetworkBackground = () => {
       phase: number;
       pulsePhase: number;
       lineIntensity: number;
+      connections: number[];
+      connectionTimer: number;
+    }> = [];
+
+    let randomConnections: Array<{
+      from: number;
+      to: number;
+      alpha: number;
+      lifetime: number;
+      maxLifetime: number;
     }> = [];
 
     const NODE_COUNT = Math.round(Math.max(40, (w * h) / 40000)); // Уменьшено для производительности
@@ -50,8 +60,93 @@ const NeonNetworkBackground = () => {
           phase: rand(0, Math.PI * 2),
           pulsePhase: rand(0, Math.PI * 2),
           lineIntensity: rand(0.2, 0.6), // Уменьшена яркость
+          connections: [],
+          connectionTimer: rand(0, 100)
         });
       }
+      randomConnections = [];
+    }
+
+    function updateRandomConnections() {
+      // Удаляем старые соединения
+      randomConnections = randomConnections.filter(conn => {
+        conn.lifetime--;
+        if (conn.lifetime <= 0) {
+          return false;
+        }
+        // Плавное исчезновение
+        if (conn.lifetime < conn.maxLifetime * 0.3) {
+          conn.alpha *= 0.95;
+        }
+        return conn.alpha > 0.01;
+      });
+
+      // Создаем новые случайные соединения
+      if (Math.random() < 0.02 && randomConnections.length < NODE_COUNT * 0.3) {
+        const from = Math.floor(Math.random() * nodes.length);
+        const to = Math.floor(Math.random() * nodes.length);
+        
+        if (from !== to) {
+          const dx = nodes[from].x - nodes[to].x;
+          const dy = nodes[from].y - nodes[to].y;
+          const dist = Math.hypot(dx, dy);
+          
+          // Создаем соединения на любом расстоянии, но с разной вероятностью
+          const probability = dist > LINE_DISTANCE ? 0.1 : 0.8;
+          
+          if (Math.random() < probability) {
+            const maxLifetime = rand(60, 180); // 1-3 секунды при 60fps
+            randomConnections.push({
+              from,
+              to,
+              alpha: rand(0.1, 0.4),
+              lifetime: maxLifetime,
+              maxLifetime
+            });
+          }
+        }
+      }
+    }
+
+    function drawRandomConnections() {
+      randomConnections.forEach(conn => {
+        const a = nodes[conn.from];
+        const b = nodes[conn.to];
+        
+        if (!a || !b) return;
+        
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.hypot(dx, dy);
+        
+        // Пульсирующий эффект
+        const pulse = Math.sin(Date.now() * 0.003 + conn.from + conn.to) * 0.3 + 0.7;
+        const finalAlpha = conn.alpha * pulse;
+        
+        // Основная линия
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        
+        // Разные стили для разных расстояний
+        if (dist > LINE_DISTANCE) {
+          // Длинные соединения - пунктирная линия
+          ctx.setLineDash([5, 10]);
+          ctx.strokeStyle = COLOR_BASE + (finalAlpha * 0.3) + ')';
+          ctx.lineWidth = 0.5;
+        } else {
+          // Короткие соединения - сплошная линия
+          ctx.setLineDash([]);
+          ctx.strokeStyle = COLOR_BASE + (finalAlpha * 0.5) + ')';
+          ctx.lineWidth = 0.8;
+        }
+        
+        ctx.shadowBlur = 3;
+        ctx.shadowColor = 'rgba(20,140,200,' + (finalAlpha * 0.2) + ')';
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+        ctx.setLineDash([]);
+      });
     }
 
     function drawGlow(x: number, y: number, r: number, intensity = 0.08) { // Уменьшено свечение
@@ -88,6 +183,8 @@ const NeonNetworkBackground = () => {
       ctx.fillRect(0, 0, w, h);
 
       // Draw connecting lines
+      updateRandomConnections();
+      
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
         for (let j = i + 1; j < nodes.length; j++) {
@@ -123,6 +220,9 @@ const NeonNetworkBackground = () => {
           }
         }
       }
+
+      // Draw random connections
+      drawRandomConnections();
 
       // Draw nodes with glow
       for (let i = 0; i < nodes.length; i++) {
