@@ -67,13 +67,12 @@ const Footer = () => {
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-6">
               <div className="flex items-center space-x-3 group">
-                <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-bright 
-                                rounded-xl rotate-45 animate-glow-intense group-hover:rotate-180 
-                                transition-transform duration-500" />
-                  <div className="absolute inset-0 w-12 h-12 border border-primary/50 
-                                rounded-xl animate-pulse" />
-                </div>
+                <img 
+                  src="/favicon.ico" 
+                  alt="Blur Logo" 
+                  className="w-12 h-12 rounded-xl object-cover border border-primary/50 
+                           group-hover:scale-110 transition-transform duration-500 animate-glow-intense" 
+                />
                 <div className="space-y-1">
                   <span className="text-3xl font-black tracking-wider text-electric">Blur</span>
                   <div className="text-sm font-mono text-muted-foreground tracking-widest">

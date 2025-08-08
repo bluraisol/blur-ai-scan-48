@@ -128,14 +128,19 @@ const HeroSection = () => {
         {/* CTA Section with advanced design */}
         <div className="space-y-8">
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="group relative px-10 py-5 bg-gradient-to-r from-primary to-primary-bright 
-                             text-background font-mono tracking-wide text-lg font-bold
-                             rounded-lg hover:shadow-2xl transform hover:scale-105 
-                             transition-all duration-300 cyber-border overflow-hidden">
+            <a 
+              href="https://t.me/blurcryptobot" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative px-10 py-5 bg-gradient-to-r from-primary to-primary-bright 
+                       text-background font-mono tracking-wide text-lg font-bold
+                       rounded-lg hover:shadow-2xl transform hover:scale-105 
+                       transition-all duration-300 cyber-border overflow-hidden block"
+            >
               <span className="relative z-10">EXPLORE BLUR</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-bright to-primary 
                             opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </button>
+            </a>
             
             {/* <button className="group px-10 py-5 border-2 border-primary text-primary 
                              font-mono tracking-wide text-lg font-bold rounded-lg

@@ -7,7 +7,8 @@ import ProcessFlowSection from "@/components/ProcessFlowSection";
 import StatsSection from "@/components/StatsSection";
 import PricingSection from "@/components/PricingSection";
 import ModesSection from "@/components/ModesSection";
-import Footer from "@/components/Footer";
+import TokenomicsSection from "@/components/TokenomicsSection";
+import CompactFooter from "@/components/CompactFooter";
 
 const Index = () => {
   const [showLoading, setShowLoading] = useState(true);
@@ -25,7 +26,8 @@ const Index = () => {
       <StatsSection />
       <PricingSection />
       <ModesSection />
-      <Footer />
+      <TokenomicsSection />
+      <CompactFooter />
     </div>
   );
 };

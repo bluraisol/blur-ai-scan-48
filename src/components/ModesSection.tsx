@@ -129,12 +129,17 @@ const ModesSection = () => {
 
                   {/* CTA Button */}
                   <div className="mt-auto">
-                    <button className="w-full py-4 px-6 border border-primary/50 rounded-lg 
-                                     text-primary hover:bg-primary/10 font-mono tracking-wide 
-                                     text-sm font-bold transition-all duration-300 
-                                     transform hover:scale-105">
+                    <a 
+                      href="https://t.me/blurcryptobot" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-full py-4 px-6 border border-primary/50 rounded-lg 
+                               text-primary hover:bg-primary/10 font-mono tracking-wide 
+                               text-sm font-bold transition-all duration-300 
+                               transform hover:scale-105 block text-center"
+                    >
                       SELECT {mode.name}
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

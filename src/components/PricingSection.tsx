@@ -142,16 +142,19 @@ const PricingSection = () => {
 
                   {/* CTA Button */}
                   <div className="mt-auto">
-                    <button 
+                    <a 
+                      href="https://t.me/blurcryptobot" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
                       className={`my-5 w-full py-4 px-6 space-y-3 rounded-lg font-mono tracking-wide text-sm font-bold
-                                transition-all duration-300 transform hover:scale-105 ${
+                                transition-all duration-300 transform hover:scale-105 block text-center ${
                         plan.popular
                           ? 'bg-gradient-to-r from-primary to-primary-bright text-background hover:shadow-xl'
                           : 'border border-primary/50 text-primary hover:bg-primary/10'
                       }`}
                     >
                       GET ACCESS
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

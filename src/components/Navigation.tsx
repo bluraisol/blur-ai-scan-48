@@ -13,7 +13,6 @@ const Navigation = () => {
     { id: "pricing", label: "PRICING", icon: CircleDollarSign },
     { id: "modes", label: "MODES", icon: Blend },
     { id: "tokenomics", label: "TOKENOMICS", icon: ScrollText },
-    // { id: "contact", label: "CONNECT", icon: Menu }
   ];
 
   useEffect(() => {
@@ -27,6 +26,12 @@ const Navigation = () => {
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
     setMobileMenuOpen(false);
+    
+    if (sectionId === "connect") {
+      window.location.href = "/connect";
+      return;
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -45,11 +50,12 @@ const Navigation = () => {
             {/* Enhanced Logo */}
             <div className="flex items-center space-x-3 group cursor-pointer">
               <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-bright 
-                              rounded-lg rotate-45 animate-glow-intense group-hover:rotate-180 
-                              transition-transform duration-500" />
-                <div className="absolute inset-0 w-10 h-10 border border-primary/50 
-                              rounded-lg animate-pulse" />
+                <img 
+                  src="/favicon.ico" 
+                  alt="Blur Logo" 
+                  className="w-10 h-10 rounded-xl object-cover border border-primary/50 
+                           group-hover:scale-110 transition-transform duration-500 animate-glow-intense" 
+                />
               </div>
               <div className="space-y-0">
                 <span className="text-2xl font-black tracking-wider text-electric">BLUR</span>
@@ -79,6 +85,14 @@ const Navigation = () => {
                   </button>
                 );
               })}
+              <button
+                onClick={() => scrollToSection("connect")}
+                className="group flex items-center space-x-2 px-4 py-2 rounded-lg 
+                         transition-all duration-300 hover-electric text-muted-foreground hover:text-primary"
+              >
+                <Menu size={16} className="transition-transform group-hover:scale-110" />
+                <span className="text-sm font-mono tracking-wide">CONNECT</span>
+              </button>
             </div>
 
             {/* Desktop CTA */}
@@ -87,12 +101,17 @@ const Navigation = () => {
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 <span>LIVE</span>
               </div>
-              <button className="cyber-border px-6 py-3 bg-gradient-to-r from-primary to-primary-bright 
-                               text-background font-mono tracking-wide text-sm font-bold
-                               hover:shadow-lg transform hover:scale-105 transition-all duration-300
-                               rounded-lg">
+              <a 
+                href="https://t.me/blurcryptobot" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="cyber-border px-6 py-3 bg-gradient-to-r from-primary to-primary-bright 
+                         text-background font-mono tracking-wide text-sm font-bold
+                         hover:shadow-lg transform hover:scale-105 transition-all duration-300
+                         rounded-lg block"
+              >
                 GET BLUR
-              </button>
+              </a>
             </div>
 
             {/* Mobile menu button */}
@@ -135,11 +154,24 @@ const Navigation = () => {
                 </button>
               );
             })}
-            <button className="cyber-border px-8 py-4 bg-gradient-to-r from-primary to-primary-bright 
-                             text-background font-mono tracking-wide text-lg font-bold
-                             rounded-lg mt-8">
-              ACTIVATE SCANNER
+            <button
+              onClick={() => scrollToSection("connect")}
+              className="group flex items-center space-x-4 px-8 py-4 rounded-lg 
+                       hover-electric text-2xl transition-all duration-300"
+            >
+              <Menu size={24} className="transition-transform group-hover:scale-110" />
+              <span className="font-mono tracking-wide">CONNECT</span>
             </button>
+            <a 
+              href="https://t.me/blurcryptobot" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="cyber-border px-8 py-4 bg-gradient-to-r from-primary to-primary-bright 
+                       text-background font-mono tracking-wide text-lg font-bold
+                       rounded-lg mt-8 block"
+            >
+              ACTIVATE SCANNER
+            </a>
           </div>
         </div>
       )}
