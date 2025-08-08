@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Zap, Activity, TrendingUp, CircleDollarSign, Blend, ScrollText } from "lucide-react";
+import { Menu, X, Zap, Activity, TrendingUp, CircleDollarSign, Blend, ScrollText, AtSign } from "lucide-react";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -54,7 +54,7 @@ const Navigation = () => {
                   src="/favicon.ico" 
                   alt="Blur Logo" 
                   className="w-10 h-10 rounded-xl object-cover border border-primary/50 
-                           group-hover:scale-110 transition-transform duration-500 animate-glow-intense" 
+                           group-hover:scale-110 transition-transform" 
                 />
               </div>
               <div className="space-y-0">
@@ -90,7 +90,7 @@ const Navigation = () => {
                 className="group flex items-center space-x-2 px-4 py-2 rounded-lg 
                          transition-all duration-300 hover-electric text-muted-foreground hover:text-primary"
               >
-                <Menu size={16} className="transition-transform group-hover:scale-110" />
+                <AtSign size={16} className="transition-transform group-hover:scale-110" />
                 <span className="text-sm font-mono tracking-wide">CONNECT</span>
               </button>
             </div>

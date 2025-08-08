@@ -2,15 +2,15 @@ import { Coins, Lock, Calendar, TrendingUp } from "lucide-react";
 
 const TokenomicsSection = () => {
   const allocationData = [
-    { name: "Public", tokens: "40M", percentage: 40, cliff: "-", vesting: "-", color: "bg-primary" },
-    { name: "DEX Liquidity", tokens: "10M", percentage: 10, cliff: "Locked (24 months)", vesting: "Locked (24 months)", color: "bg-primary/90" },
-    { name: "Ecosystem Incentives", tokens: "10.5M", percentage: 10.5, cliff: "-", vesting: "12", color: "bg-primary/80" },
-    { name: "Marketing", tokens: "9.5M", percentage: 9.5, cliff: "-", vesting: "12", color: "bg-primary/70" },
-    { name: "Research & Development", tokens: "7.5M", percentage: 7.5, cliff: "1", vesting: "12", color: "bg-primary/60" },
-    { name: "Team", tokens: "6M", percentage: 6, cliff: "6", vesting: "36", color: "bg-primary/50" },
-    { name: "CEX Liquidity", tokens: "6M", percentage: 6, cliff: "-", vesting: "-", color: "bg-primary/40" },
-    { name: "KOLs", tokens: "5.5M", percentage: 5.5, cliff: "2", vesting: "6", color: "bg-primary/30" },
-    { name: "Advisory", tokens: "5M", percentage: 5, cliff: "2", vesting: "12", color: "bg-primary/20" }
+    { name: "Public", tokens: "400M", percentage: 40, cliff: "-", vesting: "-", color: "bg-primary" },
+    { name: "DEX Liquidity", tokens: "100M", percentage: 10, cliff: "Locked (24 months)", vesting: "Locked (24 months)", color: "bg-primary/90" },
+    { name: "Ecosystem Incentives", tokens: "105M", percentage: 10.5, cliff: "-", vesting: "12", color: "bg-primary/80" },
+    { name: "Marketing", tokens: "95M", percentage: 9.5, cliff: "-", vesting: "12", color: "bg-primary/70" },
+    { name: "Research & Development", tokens: "75M", percentage: 7.5, cliff: "1", vesting: "12", color: "bg-primary/60" },
+    { name: "Team", tokens: "60M", percentage: 6, cliff: "6", vesting: "36", color: "bg-primary/50" },
+    { name: "CEX Liquidity", tokens: "60M", percentage: 6, cliff: "-", vesting: "-", color: "bg-primary/40" },
+    { name: "KOLs", tokens: "55M", percentage: 5.5, cliff: "2", vesting: "6", color: "bg-primary/30" },
+    { name: "Advisory", tokens: "50M", percentage: 5, cliff: "2", vesting: "12", color: "bg-primary/20" }
   ];
 
   return (
@@ -77,20 +77,6 @@ const TokenomicsSection = () => {
                 ))}
               </div>
             </div>
-
-            {/* Key metrics */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="card-premium p-6 text-center">
-                <TrendingUp className="w-8 h-8 text-primary mx-auto mb-3" />
-                <div className="text-2xl font-black text-electric">100M</div>
-                <div className="text-sm text-muted-foreground font-mono">TOTAL SUPPLY</div>
-              </div>
-              <div className="card-premium p-6 text-center">
-                <Lock className="w-8 h-8 text-primary mx-auto mb-3" />
-                <div className="text-2xl font-black text-electric">50%</div>
-                <div className="text-sm text-muted-foreground font-mono">LOCKED/VESTED</div>
-              </div>
-            </div>
           </div>
 
           {/* Allocation table */}
@@ -127,7 +113,7 @@ const TokenomicsSection = () => {
                       </div>
                       <div className="text-sm font-mono text-muted-foreground">
                         {item.cliff === "Locked (24 months)" ? (
-                          <span className="text-warning">Locked</span>
+                          <span className="text-warning">Locked (24m)</span>
                         ) : item.cliff === "-" ? (
                           <span>-</span>
                         ) : (
@@ -136,7 +122,7 @@ const TokenomicsSection = () => {
                       </div>
                       <div className="text-sm font-mono text-muted-foreground">
                         {item.vesting === "Locked (24 months)" ? (
-                          <span className="text-warning">24m</span>
+                          <span className="text-warning">Locked (24m)</span>
                         ) : item.vesting === "-" ? (
                           <span>-</span>
                         ) : (

@@ -2,17 +2,14 @@ import { FileText, Twitter, Github, Send, Mail, Globe } from "lucide-react";
 
 const CompactFooter = () => {
   const socialLinks = [
-    { icon: Twitter, href: "https://twitter.com/blurcrypto", label: "Twitter" },
-    { icon: Github, href: "https://github.com/blurcrypto", label: "GitHub" },
-    { icon: Send, href: "https://t.me/blurcrypto", label: "Telegram" },
-    { icon: Mail, href: "mailto:contact@blur.ai", label: "Email" }
+    { icon: Twitter, href: "https://x.com/bluronsol", label: "Twitter" },
+    { icon: Send, href: "https://t.me/blurbotai", label: "Telegram" },
+    { icon: Mail, href: "mailto:hello@blur.ceo", label: "Email" }
   ];
 
   const quickLinks = [
-    { name: "Documentation", href: "#" },
-    { name: "API Access", href: "#" },
-    { name: "Support", href: "#" },
-    { name: "Privacy Policy", href: "#" }
+    { name: "Documentation", href: "https://whitepaper.blur.ceo" },
+    { name: "Support", href: "/connect" },
   ];
 
   return (
@@ -36,7 +33,7 @@ const CompactFooter = () => {
                          group-hover:scale-110 transition-transform duration-500" 
               />
               <div className="space-y-1">
-                <span className="text-2xl font-black tracking-wider text-electric">Blur</span>
+                <span className="text-2xl font-black tracking-wider text-electric">BLUR</span>
                 <div className="text-sm font-mono text-muted-foreground tracking-widest">
                   AI MEMECOIN SCANNER
                 </div>
@@ -44,14 +41,14 @@ const CompactFooter = () => {
             </div>
             
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              Revolutionary AI-powered memecoin scanner for the Solana ecosystem. 
-              <span className="text-primary font-semibold"> Nine neural networks</span> working 
-              24/7 to identify the next big opportunity.
+              <span className="text-primary font-semibold">Revolutionary</span> AI-powered memecoin scanner for the Solana ecosystem. 
+              <span className="text-primary font-semibold"> 9 AI</span> working 
+              <span className="text-primary font-semibold"> 24/7</span> to identify the next big opportunity.
             </p>
             
             {/* Whitepaper button */}
             <a 
-              href="https://whitepaper.blur.ai" 
+              href="https://whitepaper.blur.ceo" 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-6 py-3 border border-primary/50 
@@ -116,18 +113,6 @@ const CompactFooter = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-6 text-sm text-muted-foreground">
               <span>© 2025 Blur AI Systems. All rights reserved.</span>
-            </div>
-            
-            {/* System status indicator */}
-            <div className="flex items-center space-x-4 text-xs font-mono">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span className="text-primary">NETWORK ONLINE</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
-                <span className="text-success">AI MODELS: 9/9</span>
-              </div>
             </div>
           </div>
         </div>

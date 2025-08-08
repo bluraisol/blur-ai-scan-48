@@ -74,7 +74,7 @@ const Footer = () => {
                            group-hover:scale-110 transition-transform duration-500 animate-glow-intense" 
                 />
                 <div className="space-y-1">
-                  <span className="text-3xl font-black tracking-wider text-electric">Blur</span>
+                  <span className="text-3xl font-black tracking-wider text-electric">BLUR</span>
                   <div className="text-sm font-mono text-muted-foreground tracking-widest">
                     AI MEMECOIN SCANNER
                   </div>

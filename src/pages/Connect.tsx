@@ -7,8 +7,8 @@ const Connect = () => {
       name: "Telegram",
       description: "Join our main community chat and get real-time updates",
       icon: Send,
-      url: "https://t.me/blurcrypto",
-      members: "12.3K",
+      url: "https://t.me/blurbotai",
+      members: "100+",
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-500/10",
       borderColor: "border-blue-500/30"
@@ -17,32 +17,32 @@ const Connect = () => {
       name: "Twitter",
       description: "Follow us for news, insights, and market analysis",
       icon: Twitter,
-      url: "https://twitter.com/blurcrypto",
-      members: "8.7K",
+      url: "https://x.com/bluronsol",
+      members: "40+",
       color: "from-cyan-400 to-blue-500",
       bgColor: "bg-cyan-400/10",
       borderColor: "border-cyan-400/30"
-    },
-    {
-      name: "Discord",
-      description: "Connect with traders and get technical support",
-      icon: MessageCircle,
-      url: "https://discord.gg/blurcrypto",
-      members: "5.2K",
-      color: "from-purple-500 to-indigo-600",
-      bgColor: "bg-purple-500/10",
-      borderColor: "border-purple-500/30"
-    },
-    {
-      name: "GitHub",
-      description: "Access our open-source tools and documentation",
-      icon: Github,
-      url: "https://github.com/blurcrypto",
-      members: "1.1K",
-      color: "from-gray-400 to-gray-600",
-      bgColor: "bg-gray-400/10",
-      borderColor: "border-gray-400/30"
     }
+    // {
+    //   name: "Discord",
+    //   description: "Connect with traders and get technical support",
+    //   icon: MessageCircle,
+    //   url: "https://discord.gg/blurcrypto",
+    //   members: "5.2K",
+    //   color: "from-purple-500 to-indigo-600",
+    //   bgColor: "bg-purple-500/10",
+    //   borderColor: "border-purple-500/30"
+    // },
+    // {
+    //   name: "GitHub",
+    //   description: "Access our open-source tools and documentation",
+    //   icon: Github,
+    //   url: "https://github.com/blurcrypto",
+    //   members: "1.1K",
+    //   color: "from-gray-400 to-gray-600",
+    //   bgColor: "bg-gray-400/10",
+    //   borderColor: "border-gray-400/30"
+    // }
   ];
 
   const directContacts = [
@@ -50,21 +50,21 @@ const Connect = () => {
       title: "Business Inquiries",
       description: "Partnership and business development opportunities",
       icon: Mail,
-      contact: "business@blur.ai",
+      contact: "hello@blur.ceo",
       type: "email"
     },
     {
       title: "Technical Support",
       description: "Get help with API integration and technical issues",
       icon: Users,
-      contact: "support@blur.ai",
+      contact: "help@blur.ceo",
       type: "email"
     },
     {
       title: "Media & Press",
       description: "Press releases, interviews, and media resources",
       icon: Globe,
-      contact: "media@blur.ai",
+      contact: "press@blur.ceo",
       type: "email"
     }
   ];
@@ -197,29 +197,6 @@ const Connect = () => {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        {/* Call to action */}
-        <div className="text-center mt-20">
-          <div className="card-premium p-12 rounded-2xl max-w-4xl mx-auto space-y-8">
-            <h2 className="text-3xl font-black text-electric">
-              READY TO START SCANNING?
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Join thousands of traders who trust Blur for memecoin analysis
-            </p>
-            <Button 
-              asChild
-              size="lg"
-              className="px-12 py-6 bg-gradient-to-r from-primary to-primary-bright 
-                       text-background font-mono tracking-wide text-lg font-bold
-                       hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-            >
-              <a href="https://t.me/blurcryptobot" target="_blank" rel="noopener noreferrer">
-                START SCANNING NOW
-              </a>
-            </Button>
           </div>
         </div>
       </div>
