@@ -1,6 +1,5 @@
 import LoadingIntro from "@/components/LoadingIntro";
 import NeonNetworkBackground from "@/components/NeonNetworkBackground";
-import NeonNetworkBackground from "@/components/NeonNetworkBackground";
 
 const Init = () => {
   const handleComplete = () => {
