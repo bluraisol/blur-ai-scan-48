@@ -36,14 +36,12 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center px-6 bg-digital-matrix overflow-hidden">
+    <section id="about" className="relative min-h-screen flex items-center px-6 overflow-hidden">
       {/* Enhanced background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-quantum-field opacity-50" />
-        <div className="absolute inset-0 quantum-particles animate-neural-pulse" />
+        <div className="absolute inset-0 bg-animated-grid opacity-10" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-        <div className="absolute inset-0 bg-neural-network opacity-30" />
-        <div className="absolute inset-0 cyber-scan-line" />
+        <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
       </div>
       
       <div className="max-w-7xl mx-auto relative z-10 w-full py-20">
