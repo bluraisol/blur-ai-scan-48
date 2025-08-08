@@ -26,10 +26,12 @@ const NeonNetworkBackground = () => {
       vy: number;
       r: number;
       phase: number;
+      pulsePhase: number;
+      lineIntensity: number;
     }> = [];
 
-    const NODE_COUNT = Math.round(Math.max(20, (w * h) / 90000));
-    const LINE_DISTANCE = Math.min(280, Math.max(150, Math.hypot(w, h) / 5));
+    const NODE_COUNT = Math.round(Math.max(80, (w * h) / 25000)); // Увеличено в 3.6 раза
+    const LINE_DISTANCE = Math.min(350, Math.max(200, Math.hypot(w, h) / 4)); // Увеличено расстояние соединений
     const COLOR_BASE = 'rgba(30,190,255,';
 
     function rand(min: number, max: number) { 
@@ -46,6 +48,8 @@ const NeonNetworkBackground = () => {
           vy: rand(-0.2, 0.2),
           r: rand(1.5, 3.0),
           phase: rand(0, Math.PI * 2),
+          pulsePhase: rand(0, Math.PI * 2),
+          lineIntensity: rand(0.3, 1.0),
           pulsePhase: rand(0, Math.PI * 2),
           lineIntensity: rand(0.3, 1.0),
         });
@@ -86,7 +90,7 @@ const NeonNetworkBackground = () => {
           if (dist < LINE_DISTANCE) {
             const baseAlpha = (1 - dist / LINE_DISTANCE) * 0.6;
             const pulseEffect = Math.sin(time * 0.001 + a.pulsePhase) * 0.2 + 0.8;
-            const alpha = baseAlpha * pulseEffect * a.lineIntensity;
+            const alpha = baseAlpha * pulseEffect * a.lineIntensity * 1.2; // Увеличена яркость
             
             // Основная линия
             ctx.beginPath();
@@ -99,15 +103,28 @@ const NeonNetworkBackground = () => {
             ctx.stroke();
             ctx.shadowBlur = 0;
             
-            // Дополнительная тонкая линия для некоторых соединений
-            if (alpha > 0.4 && Math.random() > 0.7) {
+            // Дополнительная тонкая линия для большего количества соединений
+            if (alpha > 0.3 && Math.random() > 0.5) { // Увеличена вероятность
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = 'rgba(100,220,255,' + (alpha * 0.3) + ')';
+              ctx.strokeStyle = 'rgba(100,220,255,' + (alpha * 0.4) + ')';
               ctx.lineWidth = 0.5;
               ctx.shadowBlur = 15;
-              ctx.shadowColor = 'rgba(100,220,255,' + (alpha * 0.4) + ')';
+              ctx.shadowColor = 'rgba(100,220,255,' + (alpha * 0.5) + ')';
+              ctx.stroke();
+              ctx.shadowBlur = 0;
+            }
+            
+            // Третья линия для самых ярких соединений
+            if (alpha > 0.6 && Math.random() > 0.8) {
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = 'rgba(150,240,255,' + (alpha * 0.2) + ')';
+              ctx.lineWidth = 0.3;
+              ctx.shadowBlur = 20;
+              ctx.shadowColor = 'rgba(150,240,255,' + (alpha * 0.3) + ')';
               ctx.stroke();
               ctx.shadowBlur = 0;
             }
@@ -190,7 +207,7 @@ const NeonNetworkBackground = () => {
       }
 
       // Диагональные линии сетки (очень тонкие)
-      if (Math.random() > 0.998) {
+      if (Math.random() > 0.995) { // Увеличена частота появления
         const startX = Math.random() * w;
         const startY = Math.random() * h;
         const endX = startX + (Math.random() - 0.5) * 200;
@@ -202,6 +219,23 @@ const NeonNetworkBackground = () => {
         ctx.strokeStyle = 'rgba(30,190,255,0.03)';
         ctx.lineWidth = 0.5;
         ctx.stroke();
+      }
+      
+      // Дополнительные горизонтальные линии
+      if (Math.random() > 0.996) {
+        const y = Math.random() * h;
+        const startX = Math.random() * w * 0.3;
+        const endX = startX + Math.random() * w * 0.4;
+        
+        ctx.beginPath();
+        ctx.moveTo(startX, y);
+        ctx.lineTo(endX, y);
+        ctx.strokeStyle = 'rgba(30,190,255,0.04)';
+        ctx.lineWidth = 0.8;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = 'rgba(30,190,255,0.02)';
+        ctx.stroke();
+        ctx.shadowBlur = 0;
       }
 
       animationId = requestAnimationFrame(render);
@@ -219,18 +253,18 @@ const NeonNetworkBackground = () => {
     }
 
     // Pulse effect
-    const pulseInterval = setInterval(() => {
+    const pulseInterval = setInterval(() => { // Увеличена частота импульсов
       const centerX = w * 0.1 + Math.random() * w * 0.8;
       const centerY = h * 0.1 + Math.random() * h * 0.8;
       ctx.save();
-      const pulseGrad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 200);
-      pulseGrad.addColorStop(0, 'rgba(40,220,255,0.08)');
-      pulseGrad.addColorStop(0.5, 'rgba(30,190,255,0.04)');
+      const pulseGrad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 250);
+      pulseGrad.addColorStop(0, 'rgba(40,220,255,0.12)');
+      pulseGrad.addColorStop(0.5, 'rgba(30,190,255,0.06)');
       pulseGrad.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = pulseGrad;
       ctx.fillRect(0, 0, w, h);
       ctx.restore();
-    }, 3500);
+    }, 2500); // Увеличена частота
 
     initNodes();
     animationId = requestAnimationFrame(render);
