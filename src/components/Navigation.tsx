@@ -12,6 +12,7 @@ const Navigation = () => {
     { id: "about", label: "TECHNOLOGY", icon: Activity },
     { id: "modes", label: "MODES", icon: Blend },    
     { id: "pricing", label: "PRICING", icon: CircleDollarSign },
+    { id: "tokenomics", label: "TOKENOMICS", icon: ScrollText },
   ];
 
   useEffect(() => {
@@ -26,8 +27,8 @@ const Navigation = () => {
     setActiveSection(sectionId);
     setMobileMenuOpen(false);
     
-    if (sectionId === "connect" || sectionId === "tokenomics") {
-      window.location.href = `/${sectionId}`;
+    if (sectionId === "connect") {
+      window.location.href = "/connect";
       return;
     }
     
@@ -57,7 +58,7 @@ const Navigation = () => {
                 />
               </div>
               <div className="space-y-0">
-                <span className="text-2xl font-black tracking-wider text-electric font-blur">BLUR</span>
+                <span className="text-2xl font-black tracking-wider text-electric">BLUR</span>
                 <div className="text-xs font-mono text-muted-foreground tracking-widest">
                   AI SCANNER
                 </div>
@@ -91,14 +92,6 @@ const Navigation = () => {
               >
                 <AtSign size={16} className="transition-transform group-hover:scale-110" />
                 <span className="text-sm font-mono tracking-wide">CONNECT</span>
-              </button>
-              <button
-                onClick={() => scrollToSection("tokenomics")}
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg 
-                         transition-all duration-300 hover-electric text-muted-foreground hover:text-primary"
-              >
-                <ScrollText size={16} className="transition-transform group-hover:scale-110" />
-                <span className="text-sm font-mono tracking-wide">TOKENOMICS</span>
               </button>
             </div>
 
@@ -168,14 +161,6 @@ const Navigation = () => {
             >
               <Menu size={24} className="transition-transform group-hover:scale-110" />
               <span className="font-mono tracking-wide">CONNECT</span>
-            </button>
-            <button
-              onClick={() => scrollToSection("tokenomics")}
-              className="group flex items-center space-x-4 px-8 py-4 rounded-lg 
-                       hover-electric text-2xl transition-all duration-300"
-            >
-              <ScrollText size={24} className="transition-transform group-hover:scale-110" />
-              <span className="font-mono tracking-wide">TOKENOMICS</span>
             </button>
             <a 
               href="https://t.me/blurcryptobot" 

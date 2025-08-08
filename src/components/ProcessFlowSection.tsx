@@ -29,7 +29,14 @@ const ProcessFlowSection = () => {
   ];
 
   return (
-    <section className="relative py-32 px-6 overflow-hidden" style={{background: 'transparent'}}>
+    <section className="relative py-32 px-6 overflow-hidden bg-background">
+      {/* Enhanced background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-animated-grid opacity-10" />
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+        <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
+      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header */}
@@ -40,7 +47,7 @@ const ProcessFlowSection = () => {
               <span className="text-primary animate-pulse">●</span> PROCESS FLOW
             </div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-electric font-blur">
+            <h2 className="text-5xl md:text-6xl font-black text-electric">
               HOW BLUR WORKS
             </h2>
             

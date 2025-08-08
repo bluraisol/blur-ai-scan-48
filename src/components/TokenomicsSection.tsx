@@ -1,10 +1,6 @@
-import { ArrowLeft, Coins, Lock, Calendar, TrendingUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { Coins, Lock, Calendar, TrendingUp } from "lucide-react";
 
-const Tokenomics = () => {
-  const navigate = useNavigate();
-
+const TokenomicsSection = () => {
   const allocationData = [
     { name: "Public", tokens: "400M", percentage: 40, cliff: "-", vesting: "-", color: "bg-primary" },
     { name: "DEX Liquidity", tokens: "100M", percentage: 10, cliff: "Locked (24 months)", vesting: "Locked (24 months)", color: "bg-primary/90" },
@@ -18,21 +14,16 @@ const Tokenomics = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <section id="tokenomics" className="relative py-32 bg-background overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-animated-grid opacity-10" />
+        <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                        w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
-        {/* Back button */}
-        <div className="mb-8">
-          <Button
-            onClick={() => navigate('/')}
-            variant="outline"
-            className="flex items-center space-x-2 border-primary/50 text-primary hover:bg-primary/10"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Назад на главную</span>
-          </Button>
-        </div>
-
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center space-y-8 mb-20">
           <div className="space-y-6">
@@ -43,9 +34,9 @@ const Tokenomics = () => {
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-black text-electric font-blur">
+            <h2 className="text-5xl md:text-6xl font-black text-electric">
               TOKENOMICS
-            </h1>
+            </h2>
             
             <div className="h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto animate-glow-intense" />
           </div>
@@ -61,7 +52,7 @@ const Tokenomics = () => {
           {/* Visual representation */}
           <div className="space-y-8">
             <div className="card-premium p-8 rounded-2xl">
-              <h3 className="text-2xl font-black text-electric mb-8 text-center font-blur">
+              <h3 className="text-2xl font-black text-electric mb-8 text-center">
                 TOKEN ALLOCATION
               </h3>
               
@@ -91,7 +82,7 @@ const Tokenomics = () => {
           {/* Allocation table */}
           <div className="space-y-8">
             <div className="card-premium p-8 rounded-2xl">
-              <h3 className="text-2xl font-black text-electric mb-8 flex items-center space-x-3 font-blur">
+              <h3 className="text-2xl font-black text-electric mb-8 flex items-center space-x-3">
                 <Calendar className="w-6 h-6" />
                 <span>VESTING SCHEDULE</span>
               </h3>
@@ -146,8 +137,8 @@ const Tokenomics = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Tokenomics;
+export default TokenomicsSection;

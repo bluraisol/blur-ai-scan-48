@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Connect from "./pages/Connect";
-import Tokenomics from "./pages/Tokenomics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,15 +15,12 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="relative min-h-screen">
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/connect" element={<Connect />} />
-            <Route path="/tokenomics" element={<Tokenomics />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/connect" element={<Connect />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

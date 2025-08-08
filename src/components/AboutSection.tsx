@@ -36,7 +36,14 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="relative py-32 px-6 overflow-hidden" style={{background: 'transparent'}}>
+    <section id="about" className="relative py-32 px-6 overflow-hidden">
+      {/* Enhanced background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-animated-grid opacity-10" />
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+        <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
+      </div>
+      
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header with enhanced design */}
         <div className="text-center space-y-8 mb-20">
@@ -46,7 +53,7 @@ const AboutSection = () => {
               <span className="text-primary">●</span> ADVANCED TECHNOLOGY
             </div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-electric font-blur">
+            <h2 className="text-5xl md:text-6xl font-black text-electric">
               AI ARCHITECTURE
             </h2>
             

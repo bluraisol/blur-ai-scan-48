@@ -1,10 +1,7 @@
-import { Twitter, Github, Send, Mail, MessageCircle, Users, Globe, ExternalLink, ArrowLeft } from "lucide-react";
+import { Twitter, Github, Send, Mail, MessageCircle, Users, Globe, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 
 const Connect = () => {
-  const navigate = useNavigate();
-
   const socialPlatforms = [
     {
       name: "Telegram",
@@ -74,20 +71,15 @@ const Connect = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-animated-grid opacity-10" />
+        <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
-        {/* Back button */}
-        <div className="mb-8">
-          <Button
-            onClick={() => navigate('/')}
-            variant="outline"
-            className="flex items-center space-x-2 border-primary/50 text-primary hover:bg-primary/10"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Назад на главную</span>
-          </Button>
-        </div>
-
         {/* Header */}
         <div className="text-center space-y-8 mb-20">
           <div className="space-y-6">
@@ -98,7 +90,7 @@ const Connect = () => {
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-black text-electric font-blur">
+            <h1 className="text-5xl md:text-6xl font-black text-electric">
               CONNECT WITH BLUR
             </h1>
             

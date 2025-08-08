@@ -13,7 +13,12 @@ const CompactFooter = () => {
   ];
 
   return (
-    <footer className="relative border-t border-border overflow-hidden" style={{background: 'transparent'}}>
+    <footer className="relative bg-background-secondary border-t border-border overflow-hidden">
+      {/* Subtle background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+        <div className="absolute inset-0 bg-animated-grid opacity-5" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
         {/* Main footer content */}
@@ -28,7 +33,7 @@ const CompactFooter = () => {
                          group-hover:scale-110 transition-transform duration-500" 
               />
               <div className="space-y-1">
-                <span className="text-2xl font-black tracking-wider text-electric font-blur">BLUR</span>
+                <span className="text-2xl font-black tracking-wider text-electric">BLUR</span>
                 <div className="text-sm font-mono text-muted-foreground tracking-widest">
                   AI MEMECOIN SCANNER
                 </div>

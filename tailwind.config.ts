@@ -21,16 +21,15 @@ export default {
 			fontFamily: {
 				'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
 				'inter': ['Inter', 'sans-serif'],
-				'blur': ['Inter', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: {
-					DEFAULT: 'transparent',
-					secondary: 'rgba(0, 0, 0, 0.3)',
-					tertiary: 'rgba(0, 0, 0, 0.4)'
+					DEFAULT: 'hsl(var(--background))',
+					secondary: 'hsl(var(--background-secondary))',
+					tertiary: 'hsl(var(--background-tertiary))'
 				},
 				foreground: 'hsl(var(--foreground))',
 				primary: {

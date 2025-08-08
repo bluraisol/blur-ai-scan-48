@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* BLUR Advanced Design System - Enhanced Dark Cyberpunk Theme */
 
 @layer base {
   :root {
@@ -55,171 +54,56 @@
     --input: 180 25% 15%;
     --ring: 180 100% 50%;
     
+    /* Advanced glow and effects system */
+    --glow-cyan: 180 100% 50%;
+    --glow-cyan-bright: 180 100% 70%;
+    --glow-cyan-electric: 180 100% 85%;
+    --glow-radius-sm: 10px;
+    --glow-radius-md: 20px;
+    --glow-radius-lg: 40px;
+    
+    /* Enhanced gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 2%), hsl(0 0% 6%), hsl(180 100% 50% / 0.1));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 4% / 0.8), hsl(180 30% 8% / 0.9));
+    --gradient-glow: linear-gradient(135deg, hsl(180 100% 50% / 0.2), hsl(180 100% 70% / 0.1));
+    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% 40%, hsl(180 100% 50% / 0.15), transparent 60%);
+    --gradient-mesh: conic-gradient(from 0deg at 50% 50%, hsl(180 100% 50% / 0.1), transparent 120deg, hsl(180 100% 50% / 0.05) 240deg, transparent);
+    
+    /* Advanced shadows */
+    --shadow-glow: 0 0 var(--glow-radius-sm) hsl(var(--glow-cyan) / 0.3);
+    --shadow-glow-md: 0 0 var(--glow-radius-md) hsl(var(--glow-cyan) / 0.4), 0 0 var(--glow-radius-lg) hsl(var(--glow-cyan) / 0.2);
+    --shadow-glow-intense: 0 0 var(--glow-radius-md) hsl(var(--glow-cyan-bright) / 0.6), 0 0 var(--glow-radius-lg) hsl(var(--glow-cyan) / 0.4);
+    --shadow-depth: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2);
+    
     --radius: 0.375rem;
+
   }
 
-  html {
-    min-height: 100vh;
-  }
-
+  /* Enhanced body styling */
   body {
-    @apply text-foreground overflow-x-hidden font-inter;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    
-    /* РЕАЛЬНЫЕ МИКРОСХЕМЫ КАК НА МАТЕРИНСКОЙ ПЛАТЕ */
-    background-color: #0a0a0f;
-    
-    /* Микросхемы - прямоугольные чипы */
-    background-image: 
-      /* Большие микросхемы (процессоры) */
-      repeating-linear-gradient(
-        0deg,
-        transparent 0px, 
-        transparent 120px,
-        rgba(20, 30, 60, 0.8) 120px,
-        rgba(30, 40, 80, 0.9) 200px,
-        rgba(20, 30, 60, 0.8) 200px,
-        transparent 200px,
-        transparent 400px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent 0px, 
-        transparent 80px,
-        rgba(20, 30, 60, 0.8) 80px,
-        rgba(30, 40, 80, 0.9) 160px,
-        rgba(20, 30, 60, 0.8) 160px,
-        transparent 160px,
-        transparent 320px
-      ),
-      
-      /* Средние микросхемы (контроллеры) */
-      repeating-linear-gradient(
-        0deg,
-        transparent 0px, 
-        transparent 60px,
-        rgba(15, 25, 50, 0.7) 60px,
-        rgba(25, 35, 70, 0.8) 120px,
-        rgba(15, 25, 50, 0.7) 120px,
-        transparent 120px,
-        transparent 240px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent 0px, 
-        transparent 40px,
-        rgba(15, 25, 50, 0.7) 40px,
-        rgba(25, 35, 70, 0.8) 80px,
-        rgba(15, 25, 50, 0.7) 80px,
-        transparent 80px,
-        transparent 160px
-      ),
-      
-      /* Маленькие микросхемы (память, логика) */
-      repeating-linear-gradient(
-        0deg,
-        transparent 0px, 
-        transparent 30px,
-        rgba(10, 20, 40, 0.6) 30px,
-        rgba(20, 30, 60, 0.7) 50px,
-        rgba(10, 20, 40, 0.6) 50px,
-        transparent 50px,
-        transparent 100px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent 0px, 
-        transparent 20px,
-        rgba(10, 20, 40, 0.6) 20px,
-        rgba(20, 30, 60, 0.7) 40px,
-        rgba(10, 20, 40, 0.6) 40px,
-        transparent 40px,
-        transparent 80px
-      ),
-      
-      /* Ножки микросхем (контакты) - тонкие линии по краям */
-      repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 119px,
-        rgba(100, 150, 255, 0.4) 119px,
-        rgba(100, 150, 255, 0.4) 121px,
-        transparent 121px,
-        transparent 199px,
-        rgba(100, 150, 255, 0.4) 199px,
-        rgba(100, 150, 255, 0.4) 201px,
-        transparent 201px,
-        transparent 400px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent 0px,
-        transparent 79px,
-        rgba(100, 150, 255, 0.4) 79px,
-        rgba(100, 150, 255, 0.4) 81px,
-        transparent 81px,
-        transparent 159px,
-        rgba(100, 150, 255, 0.4) 159px,
-        rgba(100, 150, 255, 0.4) 161px,
-        transparent 161px,
-        transparent 320px
-      );
-    
-    background-size: 
-      400px 400px,
-      320px 320px,
-      240px 240px,
-      160px 160px,
-      100px 100px,
-      80px 80px,
-      400px 400px,
-      320px 320px;
-    
-    background-attachment: fixed;
-    animation: microchip-glow 20s ease-in-out infinite;
+    @apply bg-background text-foreground overflow-x-hidden font-inter;
+    background-image: var(--gradient-mesh);
   }
   
-  /* ВСЕ БЛОКИ ПРОЗРАЧНЫЕ НАХУЙ */
-  #root {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    background: transparent !important;
-  }
-  
-  /* Анимация свечения микросхем */
-  @keyframes microchip-glow {
-    0% { 
-      filter: brightness(1) contrast(1);
-    }
-    50% { 
-      filter: brightness(1.2) contrast(1.1);
-    }
-    100% { 
-      filter: brightness(1) contrast(1);
-    }
-  }
-  
+  /* Advanced animations and effects */
   @keyframes glow-intense {
     0%, 100% { 
-      box-shadow: 0 0 20px hsl(180 100% 50% / 0.3), 0 0 40px hsl(180 100% 50% / 0.2);
+      box-shadow: var(--shadow-glow);
     }
     50% { 
-      box-shadow: 0 0 30px hsl(180 100% 50% / 0.4), 0 0 60px hsl(180 100% 50% / 0.3);
+      box-shadow: var(--shadow-glow-intense);
     }
   }
   
   @keyframes electric-pulse {
     0%, 100% { 
-      text-shadow: 0 0 5px hsl(180 100% 50% / 0.5),
-                   0 0 10px hsl(180 100% 50% / 0.3);
+      text-shadow: 0 0 5px hsl(var(--glow-cyan) / 0.5),
+                   0 0 10px hsl(var(--glow-cyan) / 0.3);
     }
     50% { 
-      text-shadow: 0 0 10px hsl(180 100% 60% / 0.8),
-                   0 0 20px hsl(180 100% 50% / 0.6),
-                   0 0 30px hsl(180 100% 50% / 0.4);
+      text-shadow: 0 0 10px hsl(var(--glow-cyan-bright) / 0.8),
+                   0 0 20px hsl(var(--glow-cyan) / 0.6),
+                   0 0 30px hsl(var(--glow-cyan) / 0.4);
     }
   }
   
@@ -234,24 +118,43 @@
     50% { transform: translateX(0%) scaleX(1); }
     100% { transform: translateX(100%) scaleX(0); }
   }
+  
+  @keyframes matrix-rain {
+    0% { transform: translateY(-100vh); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
 }
 
 @layer components {
+  /* Enhanced grid patterns */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  
+  .grid-pattern-dense {
+    background-image: 
+      linear-gradient(hsl(var(--border)) 0.5px, transparent 0.5px),
+      linear-gradient(90deg, hsl(var(--border)) 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+  }
+  
   /* Text effects */
   .text-electric {
     animation: electric-pulse 5s ease-in-out infinite;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.02em;
   }
   
   .text-glow {
-    text-shadow: 0 0 10px hsl(180 100% 50% / 0.5);
+    text-shadow: 0 0 10px hsl(var(--glow-cyan) / 0.5);
   }
   
   .text-glow-bright {
-    text-shadow: 0 0 15px hsl(180 100% 60% / 0.8),
-                 0 0 25px hsl(180 100% 50% / 0.6);
+    text-shadow: 0 0 15px hsl(var(--glow-cyan-bright) / 0.8),
+                 0 0 25px hsl(var(--glow-cyan) / 0.6);
   }
   
   /* Interactive elements */
@@ -260,24 +163,36 @@
   }
   
   .hover-electric:hover {
-    box-shadow: 0 0 20px hsl(180 100% 50% / 0.4), 0 0 40px hsl(180 100% 50% / 0.3);
-    border-color: hsl(180 100% 60%);
+    box-shadow: var(--shadow-glow-intense);
+    border-color: hsl(var(--glow-cyan-bright));
     transform: translateY(-2px);
   }
   
-  /* ВСЕ КАРТОЧКИ ПРОЗРАЧНЫЕ НАХУЙ!!! */
   .card-premium {
-    background: rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid hsl(180 30% 18%);
-    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2);
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-depth);
     backdrop-filter: blur(10px);
   }
   
   .card-premium:hover {
-    background: rgba(0, 0, 0, 0.5) !important;
-    border-color: hsl(180 50% 25%);
-    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2), 0 0 20px hsl(180 100% 50% / 0.3);
+    border-color: hsl(var(--border-hover));
+    box-shadow: var(--shadow-depth), var(--shadow-glow);
     transform: translateY(-4px);
+  }
+  
+  /* Animated backgrounds */
+  .bg-animated-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-move 20s linear infinite;
+  }
+  
+  @keyframes grid-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
   }
   
   /* Complex animations */
@@ -293,11 +208,11 @@
     animation: data-stream 2s ease-in-out infinite;
   }
   
-  /* ВСЕ СТЕКЛЯННЫЕ ЭФФЕКТЫ ПРОЗРАЧНЫЕ */
+  /* Utility classes */
   .glass-effect {
-    backdrop-filter: blur(15px);
-    background: rgba(0, 0, 0, 0.3) !important;
-    border: 1px solid rgba(0, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    background: hsl(var(--card) / 0.8);
+    border: 1px solid hsl(var(--border) / 0.5);
   }
   
   .cyber-border {
@@ -308,16 +223,9 @@
     content: '';
     position: absolute;
     inset: -1px;
-    background: linear-gradient(45deg, rgba(0, 255, 255, 0.5) 0%, transparent 50%, rgba(0, 255, 255, 0.5) 100%);
+    background: linear-gradient(45deg, hsl(var(--primary)) 0%, transparent 50%, hsl(var(--primary)) 100%);
     border-radius: inherit;
     z-index: -1;
     opacity: 0.6;
-  }
-  
-  /* BLUR brand font */
-  .font-blur {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.01em;
   }
 }
