@@ -19,10 +19,10 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
 
       {/* Main content */}
-      <div className="relative z-10 text-center space-y-16 px-6 max-w-7xl mx-auto">
+      <div className="relative z-10 text-center space-y-12 px-6 max-w-7xl mx-auto">
         {/* Hero text with enhanced styling */}
         <div className="space-y-8">
           <div className="space-y-4">
@@ -61,38 +61,9 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Enhanced stats display */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={feature.label}
-                className="card-premium p-6 text-center space-y-4 hover-electric group"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative">
-                  <Icon className="w-8 h-8 mx-auto text-primary group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute inset-0 w-8 h-8 mx-auto border border-primary/30 rounded-full animate-pulse" />
-                </div>
-                <div className="space-y-1">
-                  <div className="text-3xl font-black text-electric">
-                    {feature.value}
-                  </div>
-                  <div className="text-xs font-mono text-primary tracking-wider">
-                    {feature.label}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {feature.description}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
 
         {/* Enhanced CTA Section */}
-        <div className="space-y-12">
+        <div className="space-y-8">
           {/* Main CTA Button */}
           <div className="flex justify-center">
             <a 
@@ -114,52 +85,17 @@ const HeroSection = () => {
             </a>
           </div>
 
-          {/* Live Statistics Dashboard */}
-          <div className="max-w-4xl mx-auto">
-            <div className="card-premium p-8 rounded-2xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Scanning Status */}
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
-                    <span className="text-sm font-mono text-primary font-bold tracking-wider">
-                      LIVE SCANNING
-                    </span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-3xl font-black font-mono text-electric">
-                        {scanningCount.toLocaleString()}
-                      </span>
-                      <span className="text-sm text-muted-foreground font-mono">COINS</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Total memecoins analyzed in real-time
-                    </p>
-                  </div>
-                </div>
-
-                {/* AI Models Status */}
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-success rounded-full animate-pulse" />
-                    <span className="text-sm font-mono text-success font-bold tracking-wider">
-                      AI SYSTEMS
-                    </span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-3xl font-black font-mono text-electric">
-                        {aiModelsActive}/9
-                      </span>
-                      <span className="text-sm text-muted-foreground font-mono">ACTIVE</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Neural networks operating at full capacity
-                    </p>
-                  </div>
-                </div>
-              </div>
+          {/* Simple stats display */}
+          <div className="flex items-center justify-center space-x-8 text-sm font-mono">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <span className="text-muted-foreground">SCANNING:</span>
+              <span className="text-primary font-bold">{scanningCount.toLocaleString()} COINS</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
+              <span className="text-muted-foreground">AI MODELS:</span>
+              <span className="text-success font-bold">{aiModelsActive}/9 ACTIVE</span>
             </div>
           </div>
         </div>

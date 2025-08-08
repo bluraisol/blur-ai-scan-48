@@ -21,7 +21,7 @@ export default {
 			fontFamily: {
 				'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
 				'inter': ['Inter', 'sans-serif'],
-				'blur': ['Rajdhani', 'sans-serif'],
+				'blur': ['Inter', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
