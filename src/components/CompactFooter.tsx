@@ -33,7 +33,7 @@ const CompactFooter = () => {
                          group-hover:scale-110 transition-transform duration-500" 
               />
               <div className="space-y-1">
-                <span className="text-2xl font-black tracking-wider text-electric">BLUR</span>
+                <span className="text-2xl font-black tracking-wider text-electric font-blur">BLUR</span>
                 <div className="text-sm font-mono text-muted-foreground tracking-widest">
                   AI MEMECOIN SCANNER
                 </div>

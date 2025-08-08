@@ -66,7 +66,7 @@ const HeroSection = () => {
             </div>
             
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none">
-              <span className="block text-electric">BLUR</span>
+              <span className="block text-electric font-blur">BLUR</span>
               <span className="block text-4xl md:text-6xl lg:text-7xl font-light text-muted-foreground mt-2">
                 MEMECOIN SCANNER
               </span>

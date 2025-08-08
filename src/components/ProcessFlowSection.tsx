@@ -47,7 +47,7 @@ const ProcessFlowSection = () => {
               <span className="text-primary animate-pulse">●</span> PROCESS FLOW
             </div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-electric">
+            <h2 className="text-5xl md:text-6xl font-black text-electric font-blur">
               HOW BLUR WORKS
             </h2>
             

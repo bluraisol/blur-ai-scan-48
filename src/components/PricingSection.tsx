@@ -69,7 +69,7 @@ const PricingSection = () => {
               <span className="text-primary animate-pulse">●</span> SUBSCRIPTION PLANS
             </div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-electric">
+            <h2 className="text-5xl md:text-6xl font-black text-electric font-blur">
               CHOOSE YOUR PLAN
             </h2>
             

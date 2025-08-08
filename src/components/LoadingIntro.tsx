@@ -102,7 +102,7 @@ const LoadingIntro = ({ onComplete }: LoadingIntroProps) => {
         <div className="space-y-6">
           <div className="relative">
             <h1 className="text-8xl font-black tracking-wider text-electric">
-              BLUR
+              <span className="font-blur">BLUR</span>
             </h1>
             {/* Underline effect */}
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">

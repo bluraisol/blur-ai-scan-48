@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Fonts - Orbitron for BLUR headings */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&display=swap');
+
 /* BLUR Advanced Design System - Enhanced Dark Cyberpunk Theme */
 
 @layer base {
@@ -66,8 +69,11 @@
     --gradient-primary: linear-gradient(135deg, hsl(0 0% 2%), hsl(0 0% 6%), hsl(180 100% 50% / 0.1));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 4% / 0.8), hsl(180 30% 8% / 0.9));
     --gradient-glow: linear-gradient(135deg, hsl(180 100% 50% / 0.2), hsl(180 100% 70% / 0.1));
-    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% 40%, hsl(180 100% 50% / 0.15), transparent 60%);
-    --gradient-mesh: conic-gradient(from 0deg at 50% 50%, hsl(180 100% 50% / 0.1), transparent 120deg, hsl(180 100% 50% / 0.05) 240deg, transparent);
+    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% 40%, hsl(180 100% 50% / 0.1), transparent 60%);
+    --gradient-mesh: 
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
     
     /* Advanced shadows */
     --shadow-glow: 0 0 var(--glow-radius-sm) hsl(var(--glow-cyan) / 0.3);
@@ -82,7 +88,13 @@
   /* Enhanced body styling */
   body {
     @apply bg-background text-foreground overflow-x-hidden font-inter;
-    background-image: var(--gradient-mesh);
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
   }
   
   /* Advanced animations and effects */
@@ -131,21 +143,24 @@
   /* Enhanced grid patterns */
   .grid-pattern {
     background-image: 
-      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+      linear-gradient(rgba(120, 219, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120, 219, 255, 0.1) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   
   .grid-pattern-dense {
     background-image: 
-      linear-gradient(hsl(var(--border)) 0.5px, transparent 0.5px),
-      linear-gradient(90deg, hsl(var(--border)) 0.5px, transparent 0.5px);
+      linear-gradient(rgba(120, 219, 255, 0.05) 0.5px, transparent 0.5px),
+      linear-gradient(90deg, rgba(120, 219, 255, 0.05) 0.5px, transparent 0.5px);
     background-size: 20px 20px;
   }
   
   /* Text effects */
   .text-electric {
     animation: electric-pulse 5s ease-in-out infinite;
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    letter-spacing: 0.1em;
   }
   
   .text-glow {
@@ -184,8 +199,8 @@
   /* Animated backgrounds */
   .bg-animated-grid {
     background-image: 
-      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+      linear-gradient(rgba(120, 219, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120, 219, 255, 0.1) 1px, transparent 1px);
     background-size: 40px 40px;
     animation: grid-move 20s linear infinite;
   }
@@ -211,8 +226,8 @@
   /* Utility classes */
   .glass-effect {
     backdrop-filter: blur(20px);
-    background: hsl(var(--card) / 0.8);
-    border: 1px solid hsl(var(--border) / 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(120, 219, 255, 0.2);
   }
   
   .cyber-border {
@@ -223,9 +238,16 @@
     content: '';
     position: absolute;
     inset: -1px;
-    background: linear-gradient(45deg, hsl(var(--primary)) 0%, transparent 50%, hsl(var(--primary)) 100%);
+    background: linear-gradient(45deg, rgba(120, 219, 255, 0.5) 0%, transparent 50%, rgba(120, 219, 255, 0.5) 100%);
     border-radius: inherit;
     z-index: -1;
     opacity: 0.6;
+  }
+  
+  /* BLUR brand font */
+  .font-blur {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    letter-spacing: 0.1em;
   }
 }

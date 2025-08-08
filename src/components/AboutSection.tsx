@@ -53,7 +53,7 @@ const AboutSection = () => {
               <span className="text-primary">●</span> ADVANCED TECHNOLOGY
             </div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-electric">
+            <h2 className="text-5xl md:text-6xl font-black text-electric font-blur">
               AI ARCHITECTURE
             </h2>
             

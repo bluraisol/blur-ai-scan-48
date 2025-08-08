@@ -112,7 +112,7 @@ const StatsSection = () => {
               <span className="text-primary animate-pulse">●</span> LIVE ANALYTICS DASHBOARD
             </div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-electric">
+            <h2 className="text-5xl md:text-6xl font-black text-electric font-blur">
               PERFORMANCE METRICS
             </h2>
             
