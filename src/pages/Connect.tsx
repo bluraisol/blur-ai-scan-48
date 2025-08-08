@@ -77,7 +77,7 @@ const Connect = () => {
       <NeonNetworkBackground />
       {/* Background effects */}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
         {/* Back button */}
         <div className="mb-8">
           <Link 
