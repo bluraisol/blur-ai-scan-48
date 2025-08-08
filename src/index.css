@@ -68,66 +68,117 @@
     margin: 0;
     padding: 0;
     
-    /* НАСТОЯЩИЕ МИКРОСХЕМЫ С ДОРОЖКАМИ И КОМПОНЕНТАМИ */
+    /* РЕАЛЬНЫЕ МИКРОСХЕМЫ КАК НА МАТЕРИНСКОЙ ПЛАТЕ */
     background-color: #0a0a0f;
     
-    /* Основные дорожки микросхемы */
+    /* Микросхемы - прямоугольные чипы */
     background-image: 
-      /* Горизонтальные дорожки */
+      /* Большие микросхемы (процессоры) */
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px, 
+        transparent 120px,
+        rgba(20, 30, 60, 0.8) 120px,
+        rgba(30, 40, 80, 0.9) 200px,
+        rgba(20, 30, 60, 0.8) 200px,
+        transparent 200px,
+        transparent 400px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px, 
+        transparent 80px,
+        rgba(20, 30, 60, 0.8) 80px,
+        rgba(30, 40, 80, 0.9) 160px,
+        rgba(20, 30, 60, 0.8) 160px,
+        transparent 160px,
+        transparent 320px
+      ),
+      
+      /* Средние микросхемы (контроллеры) */
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px, 
+        transparent 60px,
+        rgba(15, 25, 50, 0.7) 60px,
+        rgba(25, 35, 70, 0.8) 120px,
+        rgba(15, 25, 50, 0.7) 120px,
+        transparent 120px,
+        transparent 240px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px, 
+        transparent 40px,
+        rgba(15, 25, 50, 0.7) 40px,
+        rgba(25, 35, 70, 0.8) 80px,
+        rgba(15, 25, 50, 0.7) 80px,
+        transparent 80px,
+        transparent 160px
+      ),
+      
+      /* Маленькие микросхемы (память, логика) */
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px, 
+        transparent 30px,
+        rgba(10, 20, 40, 0.6) 30px,
+        rgba(20, 30, 60, 0.7) 50px,
+        rgba(10, 20, 40, 0.6) 50px,
+        transparent 50px,
+        transparent 100px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px, 
+        transparent 20px,
+        rgba(10, 20, 40, 0.6) 20px,
+        rgba(20, 30, 60, 0.7) 40px,
+        rgba(10, 20, 40, 0.6) 40px,
+        transparent 40px,
+        transparent 80px
+      ),
+      
+      /* Ножки микросхем (контакты) - тонкие линии по краям */
       repeating-linear-gradient(
         0deg,
         transparent 0px,
-        transparent 18px,
-        rgba(0, 150, 255, 0.4) 19px,
-        rgba(0, 200, 255, 0.6) 20px,
-        rgba(0, 150, 255, 0.4) 21px,
-        transparent 22px,
-        transparent 40px
+        transparent 119px,
+        rgba(100, 150, 255, 0.4) 119px,
+        rgba(100, 150, 255, 0.4) 121px,
+        transparent 121px,
+        transparent 199px,
+        rgba(100, 150, 255, 0.4) 199px,
+        rgba(100, 150, 255, 0.4) 201px,
+        transparent 201px,
+        transparent 400px
       ),
-      /* Вертикальные дорожки */
       repeating-linear-gradient(
         90deg,
         transparent 0px,
-        transparent 18px,
-        rgba(0, 150, 255, 0.3) 19px,
-        rgba(0, 200, 255, 0.5) 20px,
-        rgba(0, 150, 255, 0.3) 21px,
-        transparent 22px,
-        transparent 40px
-      ),
-      /* Компоненты микросхемы - резисторы */
-      repeating-linear-gradient(
-        45deg,
-        transparent 0px,
-        transparent 78px,
-        rgba(0, 255, 150, 0.3) 79px,
-        rgba(0, 255, 150, 0.5) 82px,
-        rgba(0, 255, 150, 0.3) 83px,
-        transparent 84px,
-        transparent 160px
-      ),
-      /* Контактные площадки */
-      radial-gradient(circle at 40px 40px, rgba(0, 200, 255, 0.8) 1px, transparent 2px),
-      radial-gradient(circle at 120px 80px, rgba(0, 200, 255, 0.6) 1.5px, transparent 2.5px),
-      radial-gradient(circle at 80px 120px, rgba(0, 200, 255, 0.7) 1px, transparent 2px),
-      radial-gradient(circle at 160px 160px, rgba(0, 200, 255, 0.5) 2px, transparent 3px),
-      /* Переходные отверстия */
-      radial-gradient(circle at 200px 40px, rgba(0, 255, 200, 0.4) 0.5px, transparent 1px),
-      radial-gradient(circle at 40px 200px, rgba(0, 255, 200, 0.3) 0.5px, transparent 1px);
+        transparent 79px,
+        rgba(100, 150, 255, 0.4) 79px,
+        rgba(100, 150, 255, 0.4) 81px,
+        transparent 81px,
+        transparent 159px,
+        rgba(100, 150, 255, 0.4) 159px,
+        rgba(100, 150, 255, 0.4) 161px,
+        transparent 161px,
+        transparent 320px
+      );
     
     background-size: 
-      40px 40px, 
-      40px 40px, 
+      400px 400px,
+      320px 320px,
+      240px 240px,
       160px 160px,
-      40px 40px,
-      120px 120px,
+      100px 100px,
       80px 80px,
-      160px 160px,
-      200px 200px,
-      200px 200px;
+      400px 400px,
+      320px 320px;
     
     background-attachment: fixed;
-    animation: circuit-current 30s linear infinite;
+    animation: microchip-glow 20s ease-in-out infinite;
   }
   
   /* ВСЕ БЛОКИ ПРОЗРАЧНЫЕ НАХУЙ */
@@ -138,13 +189,16 @@
     background: transparent !important;
   }
   
-  /* Анимация тока по каналам */
-  @keyframes circuit-current {
+  /* Анимация свечения микросхем */
+  @keyframes microchip-glow {
     0% { 
-      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; 
+      filter: brightness(1) contrast(1);
+    }
+    50% { 
+      filter: brightness(1.2) contrast(1.1);
     }
     100% { 
-      background-position: 40px 40px, -40px -40px, 160px 160px, 40px 40px, 120px 120px, 80px 80px, 160px 160px, 200px 200px, -200px -200px; 
+      filter: brightness(1) contrast(1);
     }
   }
   
