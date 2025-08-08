@@ -56,7 +56,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 text-center space-y-12 px-6 max-w-7xl mx-auto">
+      <div className="relative z-10 text-center space-y-12 px-6 max-w-7xl mx-auto pt-20">
         {/* Hero text with enhanced styling */}
         <div className="space-y-8">
           <div className="space-y-4">
