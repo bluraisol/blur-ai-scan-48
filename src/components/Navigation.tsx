@@ -27,7 +27,7 @@ const Navigation = () => {
     setMobileMenuOpen(false);
     
     if (sectionId === "connect" || sectionId === "tokenomics") {
-      window.location.href = "/connect";
+      window.location.href = `/${sectionId}`;
       return;
     }
     
@@ -93,7 +93,7 @@ const Navigation = () => {
                 <span className="text-sm font-mono tracking-wide">TOKENOMICS</span>
               </button>
               <button
-                onClick={() => scrollToSection("connect")}
+                onClick={() => window.location.href = "/connect"}
                 className="group flex items-center space-x-2 px-4 py-2 rounded-lg 
                          transition-all duration-300 hover-electric text-muted-foreground hover:text-primary"
               >
@@ -170,7 +170,7 @@ const Navigation = () => {
               <span className="font-mono tracking-wide">TOKENOMICS</span>
             </button>
             <button
-              onClick={() => scrollToSection("connect")}
+              onClick={() => window.location.href = "/connect"}
               className="group flex items-center space-x-4 px-8 py-4 rounded-lg 
                        hover-electric text-2xl transition-all duration-300"
             >

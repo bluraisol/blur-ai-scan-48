@@ -3,7 +3,7 @@ import NeonNetworkBackground from "@/components/NeonNetworkBackground";
 
 const Init = () => {
   const handleComplete = () => {
-    window.location.href = "/";
+    window.location.href = "/main";
   };
 
   return (

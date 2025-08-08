@@ -23,13 +23,13 @@ const Tokenomics = () => {
         {/* Back button */}
         <div className="mb-8">
           <Link 
-            to="/"
+            to="/main"
             className="inline-flex items-center space-x-2 px-4 py-2 border border-primary/50 
                      rounded-lg text-primary hover:bg-primary/10 font-mono tracking-wide 
                      text-sm font-bold transition-all duration-300 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:scale-110 transition-transform" />
-            <span>НАЗАД</span>
+            <span>BACK</span>
           </Link>
         </div>
 

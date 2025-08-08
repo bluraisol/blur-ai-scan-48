@@ -18,8 +18,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/init" element={<Init />} />
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Init />} />
+          <Route path="/main" element={<Index />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="/tokenomics" element={<Tokenomics />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
