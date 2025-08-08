@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Brain, Zap, Shield, Activity, Cpu, Database, Network, Eye } from "lucide-react";
 
 // Configuration variable for loading duration
 const LOADING_DURATION_MS = 2500; // Change this value to adjust total loading time
@@ -11,11 +10,12 @@ interface LoadingIntroProps {
 const LoadingIntro = ({ onComplete }: LoadingIntroProps) => {
   const [progress, setProgress] = useState(0);
   const [currentText, setCurrentText] = useState("INITIALIZING NEURAL NETWORKS");
-  const [activeAI, setActiveAI] = useState(0);
+  const [matrixChars, setMatrixChars] = useState<string[]>([]);
 
   const loadingSequence = [
     "INITIALIZING NEURAL NETWORKS",
-    "CONNECTING TO SOLANA BLOCKCHAIN", 
+    "CONNECTING TO SOLANA BLOCKCHAIN",
+    "SCANNING MEMECOIN SIGNATURES", 
     "LOADING AI PATTERN RECOGNITION",
     "CALIBRATING PREDICTION SYSTEMS",
     "SYNCING REAL-TIME DATA FEEDS",
@@ -23,22 +23,17 @@ const LoadingIntro = ({ onComplete }: LoadingIntroProps) => {
     "BLUR SYSTEMS FULLY OPERATIONAL"
   ];
 
-  const aiModels = [
-    { name: "TWITTER AI", icon: Eye, status: "LOADING" },
-    { name: "DEX SCANNING AI", icon: Database, status: "LOADING" },
-    { name: "SUCCESS RATIO AI", icon: Brain, status: "LOADING" },
-    { name: "SOLSCAN AI", icon: Network, status: "LOADING" },
-    { name: "VALIDATION AI", icon: Shield, status: "LOADING" },
-    { name: "TOKEN DISTRIBUTION AI", icon: Cpu, status: "LOADING" },
-    { name: "SMART HOLDER AI", icon: Activity, status: "LOADING" },
-    { name: "PHISHING AI", icon: Shield, status: "LOADING" },
-    { name: "RUG CHECK AI", icon: Zap, status: "LOADING" }
-  ];
-
   useEffect(() => {
+    // Generate matrix characters
+    const chars = [];
+    for (let i = 0; i < 50; i++) {
+      chars.push(String.fromCharCode(0x30A0 + Math.random() * 96));
+    }
+    setMatrixChars(chars);
+
     const interval = setInterval(() => {
       setProgress(prev => {
-        const incrementPerStep = 100 / (LOADING_DURATION_MS / 50);
+        const incrementPerStep = 100 / (LOADING_DURATION_MS / 50); // Calculate increment based on duration
         const newProgress = prev + incrementPerStep;
         
         // Update text based on progress
@@ -46,13 +41,9 @@ const LoadingIntro = ({ onComplete }: LoadingIntroProps) => {
         if (textIndex < loadingSequence.length) {
           setCurrentText(loadingSequence[textIndex]);
         }
-
-        // Update active AI models
-        const aiIndex = Math.floor((newProgress / 100) * aiModels.length);
-        setActiveAI(aiIndex);
         
         if (newProgress >= 100) {
-          setTimeout(onComplete, 800);
+          setTimeout(onComplete, 1000);
           clearInterval(interval);
         }
         
@@ -65,170 +56,139 @@ const LoadingIntro = ({ onComplete }: LoadingIntroProps) => {
 
   return (
     <div className="fixed inset-0 bg-background flex items-center justify-center z-50 overflow-hidden">
-      {/* Main loading interface */}
-      <div className="relative z-10 text-center space-y-16 max-w-6xl mx-6 w-full">
+      {/* Matrix rain background */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-animated-grid opacity-20" />
         
-        {/* Enhanced Logo Section */}
-        <div className="space-y-8">
+        {/* Animated geometric field */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute border border-primary/30 animate-float-complex cyber-border"
+              style={{
+                width: `${60 + i * 25}px`,
+                height: `${60 + i * 25}px`,
+                left: `${10 + i * 8}%`,
+                top: `${15 + i * 7}%`,
+                animationDelay: `${i * 0.3}s`,
+                clipPath: i % 3 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 
+                         i % 3 === 1 ? 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' : 
+                         'none'
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Central loading interface */}
+      <div className="relative z-10 text-center space-y-12 card-premium p-12 rounded-lg max-w-2xl mx-6">
+        {/* Logo with enhanced effects */}
+        <div className="space-y-6">
           <div className="relative">
-            <div className="flex items-center justify-center space-x-4 mb-6">
-              <img 
-                src="/favicon.ico" 
-                alt="Blur Logo" 
-                className="w-16 h-16 rounded-xl object-cover border-2 border-primary/50 
-                         animate-glow-intense" 
+            <h1 className="text-8xl font-black tracking-wider text-electric">
+              BLUR
+            </h1>
+            {/* Underline effect */}
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+              <div className="h-1 w-40 bg-gradient-to-r from-transparent via-primary to-transparent animate-glow-intense" />
+            </div>
+          </div>
+          <p className="text-xl font-light text-muted-foreground tracking-wide">
+            NEXT-GEN MEMECOIN SCANNER
+          </p>
+        </div>
+
+        {/* Dynamic loading text with typewriter effect */}
+        <div className="space-y-6">
+          <div className="h-16 flex items-center justify-center">
+            <p className="text-lg font-mono text-glow tracking-wider">
+              <span className="animate-pulse">[!] </span>
+              {currentText}
+              <span>...</span>
+            </p>
+          </div>
+          
+          {/* Enhanced progress system */}
+          <div className="space-y-4">
+            {/* Main progress bar */}
+            <div className="relative w-full h-2 bg-muted rounded-full overflow-hidden">
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-primary via-primary-bright to-primary 
+                           transition-all duration-300 ease-out animate-glow-intense"
+                style={{ width: `${progress}%` }}
               />
-              <div className="space-y-1">
-                <h1 className="text-6xl md:text-8xl font-black tracking-wider text-electric">
-                  BLUR
-                </h1>
-                <p className="text-lg md:text-xl font-mono text-primary tracking-widest">
-                  AI MEMECOIN SCANNER
-                </p>
+              {/* Data stream effect */}
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="h-full w-8 bg-gradient-to-r from-transparent via-white/50 to-transparent 
+                               animate-data-stream" />
               </div>
             </div>
             
-            {/* Animated underline */}
-            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-              <div className="h-1 w-64 bg-gradient-to-r from-transparent via-primary to-transparent animate-glow-intense" />
-            </div>
-          </div>
-        </div>
-
-        {/* AI Models Grid */}
-        <div className="space-y-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-electric">
-            NEURAL NETWORK ENSEMBLE
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {aiModels.map((model, index) => {
-              const Icon = model.icon;
-              const isActive = index <= activeAI;
-              const isCompleted = index < activeAI;
-              
-              return (
-                <div
-                  key={model.name}
-                  className={`card-premium p-4 rounded-lg border transition-all duration-500 ${
-                    isCompleted 
-                      ? 'border-primary/50 bg-primary/5' 
-                      : isActive 
-                        ? 'border-primary/30 bg-primary/5 animate-glow' 
-                        : 'border-border/30'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className={`p-2 rounded-lg transition-all duration-500 ${
-                      isCompleted 
-                        ? 'bg-primary/20' 
-                        : isActive 
-                          ? 'bg-primary/10 animate-pulse' 
-                          : 'bg-muted/20'
-                    }`}>
-                      <Icon className={`w-5 h-5 transition-all duration-500 ${
-                        isCompleted 
-                          ? 'text-primary' 
-                          : isActive 
-                            ? 'text-primary animate-pulse' 
-                            : 'text-muted-foreground'
-                      }`} />
-                    </div>
-                    
-                    <div className="flex-1 text-left">
-                      <div className="text-sm font-mono font-bold text-foreground">
-                        {model.name}
-                      </div>
-                      <div className={`text-xs font-mono transition-all duration-500 ${
-                        isCompleted 
-                          ? 'text-primary' 
-                          : isActive 
-                            ? 'text-primary animate-pulse' 
-                            : 'text-muted-foreground'
-                      }`}>
-                        {isCompleted ? 'READY' : isActive ? 'LOADING...' : 'STANDBY'}
-                      </div>
-                    </div>
-                    
-                    <div className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                      isCompleted 
-                        ? 'bg-primary animate-pulse shadow-[0_0_10px_hsl(var(--primary))]' 
-                        : isActive 
-                          ? 'bg-primary/50 animate-pulse' 
-                          : 'bg-muted'
-                    }`} />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Loading Status */}
-        <div className="space-y-6">
-          <div className="card-premium p-6 rounded-lg max-w-2xl mx-auto">
-            <div className="space-y-4">
-              <div className="flex items-center justify-center space-x-2">
-                <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
-                <p className="text-lg font-mono text-glow tracking-wider">
-                  {currentText}
-                </p>
+            {/* Progress details */}
+            <div className="flex justify-between items-center text-sm font-mono">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                <span className="text-muted-foreground">PROGRESS</span>
               </div>
-              
-              {/* Enhanced progress bar */}
-              <div className="space-y-3">
-                <div className="relative w-full h-3 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-gradient-to-r from-primary via-primary-bright to-primary 
-                             transition-all duration-300 ease-out animate-glow-intense rounded-full"
-                    style={{ width: `${progress}%` }}
-                  />
-                  {/* Scanning effect */}
-                  <div className="absolute inset-0 overflow-hidden rounded-full">
-                    <div className="h-full w-12 bg-gradient-to-r from-transparent via-white/30 to-transparent 
-                                   animate-data-stream" />
-                  </div>
-                </div>
-                
-                <div className="flex justify-between items-center text-sm font-mono">
-                  <span className="text-muted-foreground">PROGRESS</span>
-                  <span className="text-primary font-bold">{Math.floor(progress)}%</span>
-                  <span className="text-muted-foreground">COMPLETE</span>
-                </div>
+              <span className="text-primary font-bold">{Math.floor(progress)}%</span>
+              <div className="flex items-center space-x-2">
+                <span className="text-muted-foreground">READY</span>
+                <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* System Status */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        {/* System status grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label: "NETWORK", value: "SOLANA", status: progress > 20 ? "CONNECTED" : "CONNECTING" },
-            { label: "LATENCY", value: "<50ms", status: progress > 40 ? "OPTIMAL" : "MEASURING" },
-            { label: "ACCURACY", value: "64.3%", status: progress > 60 ? "CALIBRATED" : "CALIBRATING" },
-            { label: "MODELS", value: `${Math.min(9, Math.floor((progress / 100) * 9))}/9`, status: progress > 80 ? "ACTIVE" : "LOADING" }
-          ].map((metric, i) => (
+            { label: "AI-CORE", status: progress > 12 ? "READY" : "BOOTING", delay: 0 },
+            { label: "SERVICES", status: progress > 25 ? "READY" : "DOWNLOADING", delay: 0.5 },
+            { label: "VALIDATION", status: progress > 50 ? "ACTIVE" : "STANDBY", delay: 1 },
+            { label: "SOLSCAN", status: progress > 90 ? "SYNC" : "CONNECTING", delay: 2 }
+          ].map((item, i) => (
             <div 
-              key={metric.label} 
-              className="glass-effect p-4 rounded-lg border border-primary/20 hover-electric"
+              key={item.label} 
+              className="glass-effect p-4 rounded border hover-electric"
+              style={{ animationDelay: `${item.delay}s` }}
             >
-              <div className="space-y-2 text-center">
-                <div className="text-xl font-black font-mono text-electric">
-                  {metric.value}
+              <div className="space-y-2">
+                <div className="flex items-center justify-center space-x-2">
+                  <div 
+                    className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                      item.status.includes('ONLINE') || item.status.includes('READY') || item.status.includes('ACTIVE') || item.status.includes('SYNC')
+                        ? 'bg-primary animate-pulse shadow-[0_0_10px_hsl(var(--primary))]' 
+                        : 'bg-muted animate-pulse'
+                    }`} 
+                  />
                 </div>
-                <div className="text-xs font-mono text-primary font-bold">
-                  {metric.label}
-                </div>
-                <div className={`text-xs font-mono ${
-                  metric.status.includes('CONNECTED') || metric.status.includes('OPTIMAL') || 
-                  metric.status.includes('CALIBRATED') || metric.status.includes('ACTIVE')
-                    ? 'text-primary' : 'text-muted-foreground'
-                }`}>
-                  {metric.status}
+                <div className="text-center">
+                  <div className="text-xs font-mono text-primary font-bold">{item.label}</div>
+                  <div className={`text-xs font-mono ${
+                    item.status.includes('ONLINE') || item.status.includes('READY') || item.status.includes('ACTIVE') || item.status.includes('SYNC')
+                      ? 'text-primary' : 'text-muted-foreground'
+                  }`}>
+                    {item.status}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Network indicators */}
+        <div className="flex justify-center space-x-8 text-xs font-mono">
+          <div className="flex items-center space-x-2">
+            <div className="w-1 h-1 bg-primary rounded-full animate-pulse" />
+            <span className="text-muted-foreground">NETWORK:</span>
+            <span className="text-primary">BLUR NETWORK</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-1 h-1 bg-primary rounded-full animate-pulse" />
+            <span className="text-muted-foreground">LATENCY:</span>
+            <span className="text-primary">&lt;50ms</span>
+          </div>
         </div>
       </div>
     </div>
