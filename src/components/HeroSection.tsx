@@ -19,10 +19,10 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" style={{background: 'transparent'}}>
 
       {/* Main content */}
-      <div className="relative z-10 text-center space-y-12 px-6 max-w-7xl mx-auto">
+      <div className="relative z-10 text-center space-y-12 px-6 max-w-7xl mx-auto" style={{background: 'transparent'}}>
         {/* Hero text with enhanced styling */}
         <div className="space-y-12">
           <div className="space-y-4">

@@ -68,46 +68,48 @@
     margin: 0;
     padding: 0;
     
-    /* Деликатный фон с микросхемами */
-    background-color: #0a0a0a;
+    /* КРАСИВЫЙ ТЕМНО-СИНИЙ ФОН С ТОКОМ ПО КАНАЛАМ */
+    background-color: #0a0a0f;
     
-    /* Простой фон с микросхемами */
+    /* Красивые каналы микросхем с эффектом тока */
     background-image: 
-      /* Тонкие горизонтальные дорожки */
+      /* Горизонтальные каналы с током */
       repeating-linear-gradient(
         0deg,
         transparent 0px,
-        transparent 98px,
-        rgba(0, 255, 255, 0.08) 99px,
-        rgba(0, 255, 255, 0.08) 100px,
-        transparent 101px,
-        transparent 200px
+        transparent 48px,
+        rgba(0, 100, 255, 0.3) 49px,
+        rgba(0, 150, 255, 0.5) 50px,
+        rgba(0, 200, 255, 0.3) 51px,
+        transparent 52px,
+        transparent 100px
       ),
-      /* Тонкие вертикальные дорожки */
+      /* Вертикальные каналы с током */
       repeating-linear-gradient(
         90deg,
         transparent 0px,
-        transparent 98px,
-        rgba(0, 255, 255, 0.06) 99px,
-        rgba(0, 255, 255, 0.06) 100px,
-        transparent 101px,
-        transparent 200px
+        transparent 48px,
+        rgba(0, 100, 255, 0.2) 49px,
+        rgba(0, 150, 255, 0.4) 50px,
+        rgba(0, 200, 255, 0.2) 51px,
+        transparent 52px,
+        transparent 100px
       ),
-      /* Очень тонкие узлы */
-      radial-gradient(circle at 200px 200px, rgba(0, 255, 255, 0.15) 1px, transparent 2px),
-      radial-gradient(circle at 400px 400px, rgba(0, 255, 255, 0.1) 0.5px, transparent 1px);
+      /* Узлы соединений с эффектом тока */
+      radial-gradient(circle at 100px 100px, rgba(0, 150, 255, 0.6) 2px, transparent 3px),
+      radial-gradient(circle at 200px 200px, rgba(0, 200, 255, 0.4) 1px, transparent 2px);
     
     background-size: 
-      200px 200px, 
-      200px 200px, 
-      400px 400px,
-      800px 800px;
+      100px 100px, 
+      100px 100px, 
+      200px 200px,
+      400px 400px;
     
     background-attachment: fixed;
-    animation: circuit-flow 30s linear infinite;
+    animation: circuit-current 25s linear infinite;
   }
   
-  /* Контент прозрачный */
+  /* ВСЕ БЛОКИ ПРОЗРАЧНЫЕ НАХУЙ */
   #root {
     position: relative;
     z-index: 1;
@@ -115,13 +117,13 @@
     background: transparent !important;
   }
   
-  /* Анимации */
-  @keyframes circuit-flow {
+  /* Анимация тока по каналам */
+  @keyframes circuit-current {
     0% { 
       background-position: 0 0, 0 0, 0 0, 0 0; 
     }
     100% { 
-      background-position: 200px 200px, -200px -200px, 400px 400px, -800px -800px; 
+      background-position: 100px 100px, -100px -100px, 200px 200px, -400px -400px; 
     }
   }
   
@@ -188,16 +190,16 @@
     transform: translateY(-2px);
   }
   
-  /* ПОЛУПРОЗРАЧНЫЕ КАРТОЧКИ */
+  /* ВСЕ КАРТОЧКИ ПРОЗРАЧНЫЕ НАХУЙ!!! */
   .card-premium {
-    background: rgba(0, 0, 0, 0.7) !important;
+    background: rgba(0, 0, 0, 0.4) !important;
     border: 1px solid hsl(180 30% 18%);
     box-shadow: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
   }
   
   .card-premium:hover {
-    background: rgba(0, 0, 0, 0.8) !important;
+    background: rgba(0, 0, 0, 0.5) !important;
     border-color: hsl(180 50% 25%);
     box-shadow: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2), 0 0 20px hsl(180 100% 50% / 0.3);
     transform: translateY(-4px);
@@ -216,11 +218,11 @@
     animation: data-stream 2s ease-in-out infinite;
   }
   
-  /* ПОЛУПРОЗРАЧНЫЕ УТИЛИТЫ */
+  /* ВСЕ СТЕКЛЯННЫЕ ЭФФЕКТЫ ПРОЗРАЧНЫЕ */
   .glass-effect {
-    backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.6) !important;
-    border: 1px solid rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2);
   }
   
   .cyber-border {

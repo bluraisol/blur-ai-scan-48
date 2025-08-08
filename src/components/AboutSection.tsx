@@ -36,7 +36,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="relative py-32 px-6 overflow-hidden">
+    <section id="about" className="relative py-32 px-6 overflow-hidden" style={{background: 'transparent'}}>
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header with enhanced design */}
         <div className="text-center space-y-8 mb-20">

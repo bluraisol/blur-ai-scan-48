@@ -28,9 +28,9 @@ export default {
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: {
-					DEFAULT: 'rgba(0, 0, 0, 0.7)',
-					secondary: 'rgba(0, 0, 0, 0.8)',
-					tertiary: 'rgba(0, 0, 0, 0.9)'
+					DEFAULT: 'transparent',
+					secondary: 'rgba(0, 0, 0, 0.3)',
+					tertiary: 'rgba(0, 0, 0, 0.4)'
 				},
 				foreground: 'hsl(var(--foreground))',
 				primary: {

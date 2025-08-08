@@ -13,7 +13,7 @@ const CompactFooter = () => {
   ];
 
   return (
-    <footer className="relative bg-background-secondary border-t border-border overflow-hidden">
+    <footer className="relative border-t border-border overflow-hidden" style={{background: 'transparent'}}>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
         {/* Main footer content */}

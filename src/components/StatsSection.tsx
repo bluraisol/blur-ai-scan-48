@@ -94,7 +94,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <section id="stats" className="relative py-32 px-6 bg-background-secondary overflow-hidden">
+    <section id="stats" className="relative py-32 px-6 overflow-hidden" style={{background: 'transparent'}}>
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header */}
         <div className="text-center space-y-8 mb-20">

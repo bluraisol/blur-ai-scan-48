@@ -51,7 +51,7 @@ const PricingSection = () => {
   ];
 
   return (
-    <section id="pricing" className="relative py-32 px-6 overflow-hidden bg-background-secondary">
+    <section id="pricing" className="relative py-32 px-6 overflow-hidden" style={{background: 'transparent'}}>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header */}

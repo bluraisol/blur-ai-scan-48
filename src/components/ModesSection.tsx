@@ -43,7 +43,7 @@ const ModesSection = () => {
   ];
 
   return (
-    <section id="modes" className="relative py-32 px-6 overflow-hidden bg-background">
+    <section id="modes" className="relative py-32 px-6 overflow-hidden" style={{background: 'transparent'}}>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header */}
