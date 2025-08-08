@@ -91,7 +91,7 @@
     position: relative;
   }
   
-  /* Circuit board background */
+  /* Advanced circuit board background with running traces */
   body::before {
     content: '';
     position: fixed;
@@ -101,39 +101,67 @@
     height: 100%;
     z-index: -1;
     background: 
-      /* Base dark gradient */
-      linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%),
-      /* Circuit patterns */
+      /* Dark base */
+      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(0, 255, 255, 0.05), transparent 60%),
+      /* Main circuit traces - horizontal */
       repeating-linear-gradient(
         0deg,
-        transparent,
-        transparent 98px,
-        rgba(0, 255, 255, 0.03) 100px
+        transparent 0px,
+        transparent 48px,
+        rgba(0, 255, 255, 0.1) 49px,
+        rgba(0, 255, 255, 0.1) 51px,
+        transparent 52px,
+        transparent 100px
       ),
+      /* Main circuit traces - vertical */
       repeating-linear-gradient(
         90deg,
-        transparent,
-        transparent 98px,
-        rgba(0, 255, 255, 0.03) 100px
+        transparent 0px,
+        transparent 48px,
+        rgba(0, 255, 255, 0.08) 49px,
+        rgba(0, 255, 255, 0.08) 51px,
+        transparent 52px,
+        transparent 100px
       ),
-      /* Diagonal circuit lines */
+      /* Diagonal traces */
       repeating-linear-gradient(
         45deg,
-        transparent,
-        transparent 140px,
-        rgba(0, 255, 255, 0.02) 142px
+        transparent 0px,
+        transparent 68px,
+        rgba(0, 255, 255, 0.04) 69px,
+        rgba(0, 255, 255, 0.04) 71px,
+        transparent 72px,
+        transparent 140px
       ),
       repeating-linear-gradient(
         -45deg,
-        transparent,
-        transparent 140px,
-        rgba(0, 255, 255, 0.02) 142px
+        transparent 0px,
+        transparent 68px,
+        rgba(0, 255, 255, 0.04) 69px,
+        rgba(0, 255, 255, 0.04) 71px,
+        transparent 72px,
+        transparent 140px
+      ),
+      /* Fine grid pattern */
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 19px,
+        rgba(0, 255, 255, 0.02) 20px,
+        transparent 21px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 19px,
+        rgba(0, 255, 255, 0.02) 20px,
+        transparent 21px
       );
-    background-size: 100px 100px, 100px 100px, 200px 200px, 200px 200px;
-    animation: circuit-flow 20s linear infinite;
+    background-size: 100% 100%, 100px 100px, 100px 100px, 140px 140px, 140px 140px, 20px 20px, 20px 20px;
+    animation: circuit-flow 30s linear infinite;
   }
   
-  /* Circuit board nodes/connection points */
+  /* Circuit nodes and connection points */
   body::after {
     content: '';
     position: fixed;
@@ -143,22 +171,61 @@
     height: 100%;
     z-index: -1;
     background-image: 
-      radial-gradient(circle at 100px 100px, rgba(0, 255, 255, 0.1) 2px, transparent 2px),
-      radial-gradient(circle at 200px 200px, rgba(0, 255, 255, 0.08) 1px, transparent 1px),
-      radial-gradient(circle at 300px 150px, rgba(0, 255, 255, 0.06) 1.5px, transparent 1.5px);
-    background-size: 200px 200px, 150px 150px, 250px 250px;
-    animation: circuit-glow 8s ease-in-out infinite;
+      /* Large connection nodes */
+      radial-gradient(circle at 100px 100px, rgba(0, 255, 255, 0.3) 1.5px, transparent 2px),
+      radial-gradient(circle at 200px 200px, rgba(0, 255, 255, 0.25) 1px, transparent 1.5px),
+      radial-gradient(circle at 50px 150px, rgba(0, 255, 255, 0.2) 1px, transparent 1.5px),
+      /* Medium nodes */
+      radial-gradient(circle at 150px 50px, rgba(0, 255, 255, 0.15) 0.8px, transparent 1px),
+      radial-gradient(circle at 250px 150px, rgba(0, 255, 255, 0.15) 0.8px, transparent 1px),
+      /* Small connection points */
+      radial-gradient(circle at 75px 75px, rgba(0, 255, 255, 0.1) 0.5px, transparent 0.8px),
+      radial-gradient(circle at 175px 125px, rgba(0, 255, 255, 0.1) 0.5px, transparent 0.8px),
+      radial-gradient(circle at 125px 175px, rgba(0, 255, 255, 0.1) 0.5px, transparent 0.8px);
+    background-size: 
+      200px 200px, 
+      300px 300px, 
+      250px 250px,
+      150px 150px,
+      180px 180px,
+      100px 100px, 120px 120px, 140px 140px;
+    animation: circuit-glow 12s ease-in-out infinite, circuit-pulse 8s ease-in-out infinite;
   }
   
   /* Advanced animations and effects */
   @keyframes circuit-flow {
-    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
-    100% { background-position: 100px 100px, -100px -100px, 200px 200px, -200px -200px; }
+    0% { 
+      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; 
+    }
+    100% { 
+      background-position: 0 0, 100px 100px, -100px -100px, 140px 140px, -140px -140px, 20px 20px, -20px -20px; 
+    }
   }
   
   @keyframes circuit-glow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+  
+  @keyframes circuit-pulse {
+    0%, 100% { 
+      background-size: 
+        200px 200px, 
+        300px 300px, 
+        250px 250px,
+        150px 150px,
+        180px 180px,
+        100px 100px, 120px 120px, 140px 140px;
+    }
+    50% { 
+      background-size: 
+        220px 220px, 
+        320px 320px, 
+        270px 270px,
+        170px 170px,
+        200px 200px,
+        110px 110px, 130px 130px, 150px 150px;
+    }
   }
   
   @keyframes glow-intense {

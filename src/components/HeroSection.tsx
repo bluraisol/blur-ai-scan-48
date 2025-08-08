@@ -24,7 +24,7 @@ const HeroSection = () => {
       {/* Main content */}
       <div className="relative z-10 text-center space-y-12 px-6 max-w-7xl mx-auto">
         {/* Hero text with enhanced styling */}
-        <div className="space-y-8">
+        <div className="space-y-12">
           <div className="space-y-4">
             <div className="inline-block px-6 py-2 border border-primary/50 rounded-full 
                           bg-primary/10 backdrop-blur-sm text-sm font-mono tracking-widest">
@@ -63,7 +63,7 @@ const HeroSection = () => {
 
 
         {/* Enhanced CTA Section */}
-        <div className="space-y-8">
+        <div className="space-y-12">
           {/* Main CTA Button */}
           <div className="flex justify-center">
             <a 
@@ -86,7 +86,7 @@ const HeroSection = () => {
           </div>
 
           {/* Simple stats display */}
-          <div className="flex items-center justify-center space-x-8 text-sm font-mono">
+          <div className="flex items-center justify-center space-x-12 text-sm font-mono mt-8">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
               <span className="text-muted-foreground">SCANNING:</span>
