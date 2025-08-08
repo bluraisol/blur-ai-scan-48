@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Google Fonts - Inter for BLUR headings */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-/* BLUR Advanced Design System - Enhanced Dark Cyberpunk Theme */
 
 @layer base {
   :root {
@@ -57,70 +55,53 @@
     --input: 180 25% 15%;
     --ring: 180 100% 50%;
     
-    /* Advanced glow and effects system */
-    --glow-cyan: 180 100% 50%;
-    --glow-cyan-bright: 180 100% 70%;
-    --glow-cyan-electric: 180 100% 85%;
-    --glow-radius-sm: 10px;
-    --glow-radius-md: 20px;
-    --glow-radius-lg: 40px;
-    
-    /* Enhanced gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(0 0% 2%), hsl(0 0% 6%), hsl(180 100% 50% / 0.1));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 4% / 0.8), hsl(180 30% 8% / 0.9));
-    --gradient-glow: linear-gradient(135deg, hsl(180 100% 50% / 0.2), hsl(180 100% 70% / 0.1));
-    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% 40%, hsl(180 100% 50% / 0.1), transparent 60%);
-    --gradient-mesh: 
-      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
-    
-    /* Advanced shadows */
-    --shadow-glow: 0 0 var(--glow-radius-sm) hsl(var(--glow-cyan) / 0.3);
-    --shadow-glow-md: 0 0 var(--glow-radius-md) hsl(var(--glow-cyan) / 0.4), 0 0 var(--glow-radius-lg) hsl(var(--glow-cyan) / 0.2);
-    --shadow-glow-intense: 0 0 var(--glow-radius-md) hsl(var(--glow-cyan-bright) / 0.6), 0 0 var(--glow-radius-lg) hsl(var(--glow-cyan) / 0.4);
-    --shadow-depth: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2);
-    
     --radius: 0.375rem;
   }
 
-  /* Enhanced body styling with circuit board background */
-  body {
-    @apply bg-background text-foreground overflow-x-hidden font-inter;
-    position: relative;
+  /* ОСНОВНОЙ ФОН С МИКРОСХЕМАМИ */
+  html {
     min-height: 100vh;
+    background: #000;
+  }
+
+  body {
+    @apply text-foreground overflow-x-hidden font-inter;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
     
-    /* Main circuit board background */
-    background: 
-      /* Base dark background */
-      hsl(0 0% 2%),
-      /* Main circuit traces - horizontal */
+    /* БАЗОВЫЙ ТЕМНЫЙ ФОН */
+    background-color: #0a0a0a;
+    
+    /* СЛОЖНЫЙ ФОН С МИКРОСХЕМАМИ */
+    background-image: 
+      /* Основные горизонтальные дорожки */
       repeating-linear-gradient(
         0deg,
         transparent 0px,
         transparent 48px,
-        rgba(0, 255, 255, 0.15) 49px,
-        rgba(0, 255, 255, 0.15) 51px,
+        rgba(0, 255, 255, 0.3) 49px,
+        rgba(0, 255, 255, 0.3) 51px,
         transparent 52px,
         transparent 100px
       ),
-      /* Main circuit traces - vertical */
+      /* Основные вертикальные дорожки */
       repeating-linear-gradient(
         90deg,
         transparent 0px,
         transparent 48px,
-        rgba(0, 255, 255, 0.12) 49px,
-        rgba(0, 255, 255, 0.12) 51px,
+        rgba(0, 255, 255, 0.25) 49px,
+        rgba(0, 255, 255, 0.25) 51px,
         transparent 52px,
         transparent 100px
       ),
-      /* Diagonal traces */
+      /* Диагональные трассы */
       repeating-linear-gradient(
         45deg,
         transparent 0px,
         transparent 68px,
-        rgba(0, 255, 255, 0.08) 69px,
-        rgba(0, 255, 255, 0.08) 71px,
+        rgba(0, 255, 255, 0.15) 69px,
+        rgba(0, 255, 255, 0.15) 71px,
         transparent 72px,
         transparent 140px
       ),
@@ -128,33 +109,45 @@
         -45deg,
         transparent 0px,
         transparent 68px,
-        rgba(0, 255, 255, 0.08) 69px,
-        rgba(0, 255, 255, 0.08) 71px,
+        rgba(0, 255, 255, 0.15) 69px,
+        rgba(0, 255, 255, 0.15) 71px,
         transparent 72px,
         transparent 140px
       ),
-      /* Fine grid pattern */
+      /* Мелкая сетка */
       repeating-linear-gradient(
         0deg,
         transparent 0px,
         transparent 19px,
-        rgba(0, 255, 255, 0.04) 20px,
+        rgba(0, 255, 255, 0.08) 20px,
         transparent 21px
       ),
       repeating-linear-gradient(
         90deg,
         transparent 0px,
         transparent 19px,
-        rgba(0, 255, 255, 0.04) 20px,
+        rgba(0, 255, 255, 0.08) 20px,
         transparent 21px
-      );
+      ),
+      /* Радиальные градиенты для глубины */
+      radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(0, 200, 255, 0.08) 0%, transparent 50%);
     
-    background-size: 100% 100%, 100px 100px, 100px 100px, 140px 140px, 140px 140px, 20px 20px, 20px 20px;
+    background-size: 
+      100px 100px, 
+      100px 100px, 
+      140px 140px, 
+      140px 140px, 
+      20px 20px, 
+      20px 20px,
+      400px 400px,
+      600px 600px;
+    
     background-attachment: fixed;
     animation: circuit-flow 30s linear infinite;
   }
   
-  /* Circuit nodes and connection points overlay */
+  /* Узлы соединений поверх основного фона */
   body::before {
     content: '';
     position: fixed;
@@ -165,17 +158,17 @@
     z-index: 0;
     pointer-events: none;
     background-image: 
-      /* Large connection nodes */
-      radial-gradient(circle at 100px 100px, rgba(0, 255, 255, 0.4) 2px, transparent 3px),
-      radial-gradient(circle at 200px 200px, rgba(0, 255, 255, 0.35) 1.5px, transparent 2.5px),
-      radial-gradient(circle at 50px 150px, rgba(0, 255, 255, 0.3) 1.5px, transparent 2.5px),
-      /* Medium nodes */
-      radial-gradient(circle at 150px 50px, rgba(0, 255, 255, 0.25) 1px, transparent 1.5px),
-      radial-gradient(circle at 250px 150px, rgba(0, 255, 255, 0.25) 1px, transparent 1.5px),
-      /* Small connection points */
-      radial-gradient(circle at 75px 75px, rgba(0, 255, 255, 0.2) 0.8px, transparent 1.2px),
-      radial-gradient(circle at 175px 125px, rgba(0, 255, 255, 0.2) 0.8px, transparent 1.2px),
-      radial-gradient(circle at 125px 175px, rgba(0, 255, 255, 0.2) 0.8px, transparent 1.2px);
+      /* Большие узлы соединений */
+      radial-gradient(circle at 100px 100px, rgba(0, 255, 255, 0.6) 2px, transparent 3px),
+      radial-gradient(circle at 200px 200px, rgba(0, 255, 255, 0.5) 1.5px, transparent 2.5px),
+      radial-gradient(circle at 50px 150px, rgba(0, 255, 255, 0.4) 1.5px, transparent 2.5px),
+      /* Средние узлы */
+      radial-gradient(circle at 150px 50px, rgba(0, 255, 255, 0.4) 1px, transparent 1.5px),
+      radial-gradient(circle at 250px 150px, rgba(0, 255, 255, 0.4) 1px, transparent 1.5px),
+      /* Мелкие точки соединения */
+      radial-gradient(circle at 75px 75px, rgba(0, 255, 255, 0.3) 0.8px, transparent 1.2px),
+      radial-gradient(circle at 175px 125px, rgba(0, 255, 255, 0.3) 0.8px, transparent 1.2px),
+      radial-gradient(circle at 125px 175px, rgba(0, 255, 255, 0.3) 0.8px, transparent 1.2px);
     background-size: 
       200px 200px, 
       300px 300px, 
@@ -183,27 +176,29 @@
       150px 150px,
       180px 180px,
       100px 100px, 120px 120px, 140px 140px;
-    animation: circuit-glow 12s ease-in-out infinite, circuit-pulse 8s ease-in-out infinite;
+    animation: circuit-glow 8s ease-in-out infinite, circuit-pulse 12s ease-in-out infinite;
   }
   
-  /* Ensure content is above background */
+  /* Контент поверх фона */
   #root {
     position: relative;
     z-index: 1;
+    min-height: 100vh;
+    /* ВАЖНО: НЕ ЗАДАЕМ ФОНОВЫЙ ЦВЕТ! */
   }
   
-  /* Advanced animations and effects */
+  /* Анимации */
   @keyframes circuit-flow {
     0% { 
-      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; 
+      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; 
     }
     100% { 
-      background-position: 0 0, 100px 100px, -100px -100px, 140px 140px, -140px -140px, 20px 20px, -20px -20px; 
+      background-position: 100px 100px, -100px -100px, 140px 140px, -140px -140px, 20px 20px, -20px -20px, 400px 400px, -600px -600px; 
     }
   }
   
   @keyframes circuit-glow {
-    0%, 100% { opacity: 0.6; }
+    0%, 100% { opacity: 0.8; }
     50% { opacity: 1; }
   }
   
@@ -230,22 +225,22 @@
   
   @keyframes glow-intense {
     0%, 100% { 
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 0 20px hsl(180 100% 50% / 0.3), 0 0 40px hsl(180 100% 50% / 0.2);
     }
     50% { 
-      box-shadow: var(--shadow-glow-intense);
+      box-shadow: 0 0 30px hsl(180 100% 50% / 0.4), 0 0 60px hsl(180 100% 50% / 0.3);
     }
   }
   
   @keyframes electric-pulse {
     0%, 100% { 
-      text-shadow: 0 0 5px hsl(var(--glow-cyan) / 0.5),
-                   0 0 10px hsl(var(--glow-cyan) / 0.3);
+      text-shadow: 0 0 5px hsl(180 100% 50% / 0.5),
+                   0 0 10px hsl(180 100% 50% / 0.3);
     }
     50% { 
-      text-shadow: 0 0 10px hsl(var(--glow-cyan-bright) / 0.8),
-                   0 0 20px hsl(var(--glow-cyan) / 0.6),
-                   0 0 30px hsl(var(--glow-cyan) / 0.4);
+      text-shadow: 0 0 10px hsl(180 100% 60% / 0.8),
+                   0 0 20px hsl(180 100% 50% / 0.6),
+                   0 0 30px hsl(180 100% 50% / 0.4);
     }
   }
   
@@ -260,46 +255,24 @@
     50% { transform: translateX(0%) scaleX(1); }
     100% { transform: translateX(100%) scaleX(0); }
   }
-  
-  @keyframes matrix-rain {
-    0% { transform: translateY(-100vh); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
-  }
 }
 
 @layer components {
-  /* Enhanced grid patterns */
-  .grid-pattern {
-    background-image: 
-      linear-gradient(rgba(120, 219, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(120, 219, 255, 0.1) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  
-  .grid-pattern-dense {
-    background-image: 
-      linear-gradient(rgba(120, 219, 255, 0.05) 0.5px, transparent 0.5px),
-      linear-gradient(90deg, rgba(120, 219, 255, 0.05) 0.5px, transparent 0.5px);
-    background-size: 20px 20px;
-  }
-  
   /* Text effects */
   .text-electric {
     animation: electric-pulse 5s ease-in-out infinite;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
   }
   
   .text-glow {
-    text-shadow: 0 0 10px hsl(var(--glow-cyan) / 0.5);
+    text-shadow: 0 0 10px hsl(180 100% 50% / 0.5);
   }
   
   .text-glow-bright {
-    text-shadow: 0 0 15px hsl(var(--glow-cyan-bright) / 0.8),
-                 0 0 25px hsl(var(--glow-cyan) / 0.6);
+    text-shadow: 0 0 15px hsl(180 100% 60% / 0.8),
+                 0 0 25px hsl(180 100% 50% / 0.6);
   }
   
   /* Interactive elements */
@@ -308,36 +281,22 @@
   }
   
   .hover-electric:hover {
-    box-shadow: var(--shadow-glow-intense);
-    border-color: hsl(var(--glow-cyan-bright));
+    box-shadow: 0 0 20px hsl(180 100% 50% / 0.4), 0 0 40px hsl(180 100% 50% / 0.3);
+    border-color: hsl(180 100% 60%);
     transform: translateY(-2px);
   }
   
   .card-premium {
-    background: var(--gradient-card);
-    border: 1px solid hsl(var(--border));
-    box-shadow: var(--shadow-depth);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid hsl(180 30% 18%);
+    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2);
     backdrop-filter: blur(10px);
   }
   
   .card-premium:hover {
-    border-color: hsl(var(--border-hover));
-    box-shadow: var(--shadow-depth), var(--shadow-glow);
+    border-color: hsl(180 50% 25%);
+    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2), 0 0 20px hsl(180 100% 50% / 0.3);
     transform: translateY(-4px);
-  }
-  
-  /* Animated backgrounds */
-  .bg-animated-grid {
-    background-image: 
-      linear-gradient(rgba(120, 219, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(120, 219, 255, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: grid-move 20s linear infinite;
-  }
-  
-  @keyframes grid-move {
-    0% { background-position: 0 0; }
-    100% { background-position: 40px 40px; }
   }
   
   /* Complex animations */
@@ -356,8 +315,8 @@
   /* Utility classes */
   .glass-effect {
     backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(120, 219, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.2);
   }
   
   .cyber-border {
@@ -368,7 +327,7 @@
     content: '';
     position: absolute;
     inset: -1px;
-    background: linear-gradient(45deg, rgba(120, 219, 255, 0.5) 0%, transparent 50%, rgba(120, 219, 255, 0.5) 100%);
+    background: linear-gradient(45deg, rgba(0, 255, 255, 0.5) 0%, transparent 50%, rgba(0, 255, 255, 0.5) 100%);
     border-radius: inherit;
     z-index: -1;
     opacity: 0.6;
@@ -378,6 +337,6 @@
   .font-blur {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
   }
 }
