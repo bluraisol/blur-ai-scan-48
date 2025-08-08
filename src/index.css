@@ -81,8 +81,8 @@
 
   /* Enhanced body styling */
   body {
-    @apply bg-background text-foreground overflow-x-hidden font-inter;
-    background-image: var(--gradient-mesh);
+    @apply text-foreground overflow-x-hidden font-inter;
+    background: radial-gradient(ellipse at top, #031028 0%, #020617 50%, #00010a 100%);
   }
   
   /* Advanced animations and effects */

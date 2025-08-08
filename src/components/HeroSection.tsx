@@ -19,40 +19,26 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-transparent">
       {/* Advanced background effects */}
-      <div className="absolute inset-0">
-        {/* Animated mesh gradient */}
-        <div className="absolute inset-0 opacity-30" 
-             style={{ background: 'var(--gradient-mesh)' }} />
-        
-        {/* Grid pattern with animation */}
-        <div className="absolute inset-0 bg-animated-grid opacity-15" />
-        
-        {/* Radial glow */}
-        <div className="absolute inset-0" 
-             style={{ background: 'var(--gradient-hero)' }} />
-        
+      <div className="absolute inset-0 opacity-20">
         {/* Dynamic geometric shapes */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute border border-primary/20 animate-float-complex cyber-border"
-              style={{
-                width: `${40 + i * 20}px`,
-                height: `${40 + i * 20}px`,
-                left: `${5 + (i * 7) % 90}%`,
-                top: `${10 + (i * 11) % 80}%`,
-                animationDelay: `${i * 0.4}s`,
-                clipPath: i % 4 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 
-                         i % 4 === 1 ? 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' :
-                         i % 4 === 2 ? 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' :
-                         'none'
-              }}
-            />
-          ))}
-        </div>
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute border border-primary/10 animate-float-complex"
+            style={{
+              width: `${60 + i * 30}px`,
+              height: `${60 + i * 30}px`,
+              left: `${10 + (i * 12) % 80}%`,
+              top: `${15 + (i * 15) % 70}%`,
+              animationDelay: `${i * 0.6}s`,
+              clipPath: i % 3 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 
+                       i % 3 === 1 ? 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' :
+                       'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+            }}
+          />
+        ))}
       </div>
 
       {/* Main content */}

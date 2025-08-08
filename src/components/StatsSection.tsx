@@ -94,13 +94,11 @@ const StatsSection = () => {
   ];
 
   return (
-    <section id="stats" className="relative min-h-screen flex items-center px-6 bg-background-secondary overflow-hidden">
+    <section id="stats" className="relative min-h-screen flex items-center px-6 overflow-hidden">
       {/* Enhanced background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-animated-grid opacity-15" />
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-        <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10 w-full py-20">

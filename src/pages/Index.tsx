@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LoadingIntro from "@/components/LoadingIntro";
+import NeonNetworkBackground from "@/components/NeonNetworkBackground";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -18,7 +19,8 @@ const Index = () => {
   }
 
   return (
-    <div className="relative bg-background">
+    <div className="relative">
+      <NeonNetworkBackground />
       <Navigation />
       <HeroSection />
       <StatsSection />
