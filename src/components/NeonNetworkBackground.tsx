@@ -26,10 +26,12 @@ const NeonNetworkBackground = () => {
       vy: number;
       r: number;
       phase: number;
+      shimmer: number;
+      pulsePhase: number;
     }> = [];
 
-    const NODE_COUNT = Math.round(Math.max(20, (w * h) / 90000));
-    const LINE_DISTANCE = Math.min(220, Math.max(120, Math.hypot(w, h) / 6));
+    const NODE_COUNT = Math.round(Math.max(40, (w * h) / 45000)); // Увеличил количество узлов в 2 раза
+    const LINE_DISTANCE = Math.min(280, Math.max(160, Math.hypot(w, h) / 5)); // Увеличил дистанцию связей
     const COLOR_BASE = 'rgba(30,190,255,';
 
     function rand(min: number, max: number) { 
@@ -46,14 +48,16 @@ const NeonNetworkBackground = () => {
           vy: rand(-0.2, 0.2),
           r: rand(1.5, 3.0),
           phase: rand(0, Math.PI * 2),
+          shimmer: rand(0, Math.PI * 2),
+          pulsePhase: rand(0, Math.PI * 2),
         });
       }
     }
 
     function drawGlow(x: number, y: number, r: number, intensity = 0.12) {
       const grad = ctx.createRadialGradient(x, y, 0, x, y, r * 8);
-      grad.addColorStop(0, COLOR_BASE + (0.45 * intensity) + ')');
-      grad.addColorStop(0.25, COLOR_BASE + (0.18 * intensity) + ')');
+      grad.addColorStop(0, COLOR_BASE + (0.6 * intensity) + ')');
+      grad.addColorStop(0.25, COLOR_BASE + (0.3 * intensity) + ')');
       grad.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = grad;
       ctx.beginPath();
@@ -61,6 +65,50 @@ const NeonNetworkBackground = () => {
       ctx.fill();
     }
 
+    function drawShimmerLine(x1: number, y1: number, x2: number, y2: number, alpha: number, shimmerOffset: number) {
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const length = Math.hypot(dx, dy);
+      
+      // Основная линия
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.strokeStyle = COLOR_BASE + (alpha * 0.8) + ')';
+      ctx.lineWidth = 1.2;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = 'rgba(30,190,255,0.6)';
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      
+      // Переливающийся эффект
+      const shimmerPos = (shimmerOffset % (Math.PI * 2)) / (Math.PI * 2);
+      const shimmerX = x1 + dx * shimmerPos;
+      const shimmerY = y1 + dy * shimmerPos;
+      
+      // Яркая точка переливания
+      const shimmerGrad = ctx.createRadialGradient(shimmerX, shimmerY, 0, shimmerX, shimmerY, 15);
+      shimmerGrad.addColorStop(0, 'rgba(180,240,255,0.8)');
+      shimmerGrad.addColorStop(0.5, COLOR_BASE + '0.4)');
+      shimmerGrad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = shimmerGrad;
+      ctx.beginPath();
+      ctx.arc(shimmerX, shimmerY, 8, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Дополнительная яркая линия в месте переливания
+      ctx.beginPath();
+      const segmentStart = Math.max(0, shimmerPos - 0.1);
+      const segmentEnd = Math.min(1, shimmerPos + 0.1);
+      ctx.moveTo(x1 + dx * segmentStart, y1 + dy * segmentStart);
+      ctx.lineTo(x1 + dx * segmentEnd, y1 + dy * segmentEnd);
+      ctx.strokeStyle = 'rgba(180,240,255,0.9)';
+      ctx.lineWidth = 2;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = 'rgba(30,190,255,0.8)';
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    }
     let animationId: number;
 
     function render(time: number) {
@@ -68,8 +116,8 @@ const NeonNetworkBackground = () => {
 
       // Faint central gradient to emulate depth
       const g = ctx.createLinearGradient(0, 0, 0, h);
-      g.addColorStop(0, 'rgba(2,6,23,0.7)');
-      g.addColorStop(1, 'rgba(1,2,8,0.85)');
+      g.addColorStop(0, 'rgba(2,6,23,0.5)');
+      g.addColorStop(1, 'rgba(1,2,8,0.7)');
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, w, h);
 
@@ -82,16 +130,9 @@ const NeonNetworkBackground = () => {
           const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
           if (dist < LINE_DISTANCE) {
-            const alpha = (1 - dist / LINE_DISTANCE) * 0.45;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = COLOR_BASE + (alpha * 0.9) + ')';
-            ctx.lineWidth = 0.9;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = 'rgba(30,190,255,0.9)';
-            ctx.stroke();
-            ctx.shadowBlur = 0;
+            const alpha = (1 - dist / LINE_DISTANCE) * 0.6;
+            const shimmerOffset = time * 0.003 + (i + j) * 0.5; // Уникальное смещение для каждой линии
+            drawShimmerLine(a.x, a.y, b.x, b.y, alpha, shimmerOffset);
           }
         }
       }
@@ -99,7 +140,10 @@ const NeonNetworkBackground = () => {
       // Draw nodes with glow
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
-        n.phase += 0.002 + (n.r * 0.0005);
+        n.phase += 0.003 + (n.r * 0.0008);
+        n.shimmer += 0.05;
+        n.pulsePhase += 0.02;
+        
         n.x += n.vx + Math.sin(n.phase) * 0.1;
         n.y += n.vy + Math.cos(n.phase) * 0.1;
 
@@ -109,35 +153,41 @@ const NeonNetworkBackground = () => {
         if (n.y < -50) n.y = h + 50;
         if (n.y > h + 50) n.y = -50;
 
-        // Glow
-        drawGlow(n.x, n.y, n.r, 1.0);
+        // Enhanced pulsing glow
+        const pulseIntensity = 1.0 + Math.sin(n.pulsePhase) * 0.3;
+        drawGlow(n.x, n.y, n.r, pulseIntensity);
 
-        // Core dot
+        // Core dot with shimmer
+        const shimmerIntensity = 0.98 + Math.sin(n.shimmer) * 0.2;
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(180,240,255,0.98)';
+        ctx.fillStyle = `rgba(180,240,255,${shimmerIntensity})`;
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
 
-        // Tiny halo
+        // Enhanced halo with pulse
+        const haloAlpha = 0.35 + Math.sin(n.pulsePhase * 0.5) * 0.15;
         ctx.beginPath();
-        ctx.strokeStyle = COLOR_BASE + '0.35)';
-        ctx.lineWidth = 1;
-        ctx.arc(n.x, n.y, n.r + 3, 0, Math.PI * 2);
+        ctx.strokeStyle = COLOR_BASE + haloAlpha + ')';
+        ctx.lineWidth = 1.5;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = COLOR_BASE + '0.4)';
+        ctx.arc(n.x, n.y, n.r + 4, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.shadowBlur = 0;
       }
 
       // Subtle waveform
       ctx.beginPath();
       const t = time * 0.0005;
       for (let x = 0; x < w; x += 10) {
-        const y = h * 0.12 + Math.sin((x * 0.02) + t) * (h * 0.03) + Math.cos((x * 0.01) - t * 0.5) * 10;
+        const y = h * 0.12 + Math.sin((x * 0.02) + t) * (h * 0.04) + Math.cos((x * 0.01) - t * 0.5) * 12;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
-      ctx.strokeStyle = 'rgba(60,200,255,0.12)';
-      ctx.lineWidth = 2;
-      ctx.shadowBlur = 18;
-      ctx.shadowColor = 'rgba(30,190,255,0.05)';
+      ctx.strokeStyle = 'rgba(60,200,255,0.18)';
+      ctx.lineWidth = 2.5;
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = 'rgba(30,190,255,0.1)';
       ctx.stroke();
       ctx.shadowBlur = 0;
 
@@ -160,13 +210,14 @@ const NeonNetworkBackground = () => {
       const centerX = w * 0.2 + Math.random() * w * 0.6;
       const centerY = h * 0.15 + Math.random() * h * 0.7;
       ctx.save();
-      const pulseGrad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 160);
-      pulseGrad.addColorStop(0, 'rgba(40,220,255,0.06)');
+      const pulseGrad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 200);
+      pulseGrad.addColorStop(0, 'rgba(40,220,255,0.12)');
+      pulseGrad.addColorStop(0.5, 'rgba(30,190,255,0.06)');
       pulseGrad.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = pulseGrad;
       ctx.fillRect(0, 0, w, h);
       ctx.restore();
-    }, 4200);
+    }, 3000); // Более частые пульсации
 
     initNodes();
     animationId = requestAnimationFrame(render);
@@ -182,8 +233,8 @@ const NeonNetworkBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: -1 }}
+      className="fixed inset-0 w-full h-full pointer-events-none opacity-90"
+      style={{ zIndex: -1, mixBlendMode: 'screen' }}
     />
   );
 };
