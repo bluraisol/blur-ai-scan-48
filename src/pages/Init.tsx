@@ -1,5 +1,6 @@
 import LoadingIntro from "@/components/LoadingIntro";
 import NeonNetworkBackground from "@/components/NeonNetworkBackground";
+import NeonNetworkBackground from "@/components/NeonNetworkBackground";
 
 const Init = () => {
   const handleComplete = () => {
@@ -7,8 +8,10 @@ const Init = () => {
   };
 
   return (
-    <div className="relative">
-      <NeonNetworkBackground />
+    <div className="relative min-h-screen">
+      <div className="absolute inset-0 opacity-30">
+        <NeonNetworkBackground />
+      </div>
       <LoadingIntro onComplete={handleComplete} />
     </div>
   );
