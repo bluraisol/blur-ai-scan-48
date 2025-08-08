@@ -8,7 +8,6 @@ import ProcessFlowSection from "@/components/ProcessFlowSection";
 import StatsSection from "@/components/StatsSection";
 import PricingSection from "@/components/PricingSection";
 import ModesSection from "@/components/ModesSection";
-import TokenomicsSection from "@/components/TokenomicsSection";
 import CompactFooter from "@/components/CompactFooter";
 
 const Index = () => {
@@ -28,7 +27,6 @@ const Index = () => {
       <ProcessFlowSection />
       <ModesSection />
       <PricingSection />
-      <TokenomicsSection />
       <CompactFooter />
     </div>
   );

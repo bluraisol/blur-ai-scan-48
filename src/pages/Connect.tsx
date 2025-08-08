@@ -1,3 +1,6 @@
+import NeonNetworkBackground from "@/components/NeonNetworkBackground";
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Twitter, Github, Send, Mail, MessageCircle, Users, Globe, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -70,16 +73,24 @@ const Connect = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
+      <NeonNetworkBackground />
       {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-animated-grid opacity-10" />
-        <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
+        {/* Back button */}
+        <div className="mb-8">
+          <Link 
+            to="/"
+            className="inline-flex items-center space-x-2 px-4 py-2 border border-primary/50 
+                     rounded-lg text-primary hover:bg-primary/10 font-mono tracking-wide 
+                     text-sm font-bold transition-all duration-300 group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <span>НАЗАД</span>
+          </Link>
+        </div>
+
         {/* Header */}
         <div className="text-center space-y-8 mb-20">
           <div className="space-y-6">

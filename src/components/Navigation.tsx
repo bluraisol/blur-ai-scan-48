@@ -12,7 +12,6 @@ const Navigation = () => {
     { id: "about", label: "TECHNOLOGY", icon: Activity },
     { id: "modes", label: "MODES", icon: Blend },    
     { id: "pricing", label: "PRICING", icon: CircleDollarSign },
-    { id: "tokenomics", label: "TOKENOMICS", icon: ScrollText },
   ];
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const Navigation = () => {
     setActiveSection(sectionId);
     setMobileMenuOpen(false);
     
-    if (sectionId === "connect") {
+    if (sectionId === "connect" || sectionId === "tokenomics") {
       window.location.href = "/connect";
       return;
     }
@@ -67,7 +66,7 @@ const Navigation = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              {navItems.slice(0, 10).map((item) => {
+              {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
                   <button
@@ -85,6 +84,14 @@ const Navigation = () => {
                   </button>
                 );
               })}
+              <button
+                onClick={() => window.location.href = "/tokenomics"}
+                className="group flex items-center space-x-2 px-4 py-2 rounded-lg 
+                         transition-all duration-300 hover-electric text-muted-foreground hover:text-primary"
+              >
+                <ScrollText size={16} className="transition-transform group-hover:scale-110" />
+                <span className="text-sm font-mono tracking-wide">TOKENOMICS</span>
+              </button>
               <button
                 onClick={() => scrollToSection("connect")}
                 className="group flex items-center space-x-2 px-4 py-2 rounded-lg 
@@ -154,6 +161,14 @@ const Navigation = () => {
                 </button>
               );
             })}
+            <button
+              onClick={() => window.location.href = "/tokenomics"}
+              className="group flex items-center space-x-4 px-8 py-4 rounded-lg 
+                       hover-electric text-2xl transition-all duration-300"
+            >
+              <ScrollText size={24} className="transition-transform group-hover:scale-110" />
+              <span className="font-mono tracking-wide">TOKENOMICS</span>
+            </button>
             <button
               onClick={() => scrollToSection("connect")}
               className="group flex items-center space-x-4 px-8 py-4 rounded-lg 
