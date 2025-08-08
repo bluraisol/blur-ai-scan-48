@@ -52,14 +52,14 @@ const NeonNetworkBackground = () => {
       nodes = [];
       for (let i = 0; i < NODE_COUNT; i++) {
         nodes.push({
-          x: rand(0, w),
-          y: rand(0, h),
+          x: Math.random() * w,
+          y: Math.random() * h,
           vx: rand(-0.8, 0.8), // Увеличена скорость движения
           vy: rand(-0.8, 0.8),
           r: rand(1.5, 3.0),
           phase: rand(0, Math.PI * 2),
           pulsePhase: rand(0, Math.PI * 2),
-          lineIntensity: rand(0.2, 0.6), // Уменьшена яркость
+          lineIntensity: rand(0.15, 0.4), // Еще больше уменьшена яркость точек
           connections: [],
           connectionTimer: rand(0, 100)
         });
@@ -132,17 +132,17 @@ const NeonNetworkBackground = () => {
         if (dist > LINE_DISTANCE) {
           // Длинные соединения - пунктирная линия
           ctx.setLineDash([5, 10]);
-          ctx.strokeStyle = COLOR_BASE + (finalAlpha * 0.3) + ')';
+          ctx.strokeStyle = COLOR_BASE + (finalAlpha * 0.5) + ')'; // Увеличена яркость
           ctx.lineWidth = 0.5;
         } else {
           // Короткие соединения - сплошная линия
           ctx.setLineDash([]);
-          ctx.strokeStyle = COLOR_BASE + (finalAlpha * 0.5) + ')';
-          ctx.lineWidth = 0.8;
+          ctx.strokeStyle = COLOR_BASE + (finalAlpha * 0.7) + ')'; // Увеличена яркость
+          ctx.lineWidth = 1.0; // Увеличена толщина
         }
         
         ctx.shadowBlur = 3;
-        ctx.shadowColor = 'rgba(20,140,200,' + (finalAlpha * 0.2) + ')';
+        ctx.shadowColor = 'rgba(20,140,200,' + (finalAlpha * 0.4) + ')'; // Увеличено свечение
         ctx.stroke();
         ctx.shadowBlur = 0;
         ctx.setLineDash([]);
@@ -201,19 +201,19 @@ const NeonNetworkBackground = () => {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = COLOR_BASE + (alpha * 0.6) + ')';
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = COLOR_BASE + (alpha * 0.8) + ')'; // Увеличена яркость соединений
+            ctx.lineWidth = 1.0; // Увеличена толщина
             ctx.shadowBlur = 4; // Уменьшено размытие для производительности
-            ctx.shadowColor = 'rgba(20,140,200,' + (alpha * 0.3) + ')';
+            ctx.shadowColor = 'rgba(20,140,200,' + (alpha * 0.5) + ')'; // Увеличено свечение
             ctx.stroke();
             ctx.shadowBlur = 0;
             
             // Дополнительная тонкая линия (реже для производительности)
-            if (alpha > 0.2 && Math.random() > 0.8) {
+            if (alpha > 0.15 && Math.random() > 0.85) {
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = 'rgba(80,180,220,' + (alpha * 0.2) + ')';
+              ctx.strokeStyle = 'rgba(80,180,220,' + (alpha * 0.3) + ')'; // Увеличена яркость
               ctx.lineWidth = 0.3;
               ctx.stroke();
             }
@@ -239,17 +239,17 @@ const NeonNetworkBackground = () => {
         if (n.y > h + 50) n.y = -50;
 
         // Glow
-        drawGlow(n.x, n.y, n.r, 0.6); // Уменьшено свечение
+        drawGlow(n.x, n.y, n.r, 0.4); // Еще больше уменьшено свечение точек
 
         // Core dot
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(120,200,240,0.8)'; // Менее яркий
+        ctx.fillStyle = 'rgba(100,180,220,0.6)'; // Еще менее яркие точки
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
 
         // Tiny halo
         ctx.beginPath();
-        ctx.strokeStyle = COLOR_BASE + '0.2)';
+        ctx.strokeStyle = COLOR_BASE + '0.15)'; // Уменьшена яркость ореола
         ctx.lineWidth = 1;
         ctx.arc(n.x, n.y, n.r + 3, 0, Math.PI * 2);
         ctx.stroke();
