@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Google Fonts - Rajdhani for BLUR headings */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+/* Import Google Fonts - Inter for BLUR headings */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* BLUR Advanced Design System - Enhanced Dark Cyberpunk Theme */
 
@@ -82,34 +82,25 @@
     --shadow-depth: 0 20px 40px hsl(0 0% 0% / 0.3), 0 10px 20px hsl(0 0% 0% / 0.2);
     
     --radius: 0.375rem;
-
   }
 
-  /* Enhanced body styling */
+  /* Enhanced body styling with circuit board background */
   body {
     @apply bg-background text-foreground overflow-x-hidden font-inter;
     position: relative;
-  }
-  
-  /* Advanced circuit board background with running traces */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    min-height: 100vh;
+    
+    /* Main circuit board background */
     background: 
-      /* Dark base */
-      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(0, 255, 255, 0.05), transparent 60%),
+      /* Base dark background */
+      hsl(0 0% 2%),
       /* Main circuit traces - horizontal */
       repeating-linear-gradient(
         0deg,
         transparent 0px,
         transparent 48px,
-        rgba(0, 255, 255, 0.1) 49px,
-        rgba(0, 255, 255, 0.1) 51px,
+        rgba(0, 255, 255, 0.15) 49px,
+        rgba(0, 255, 255, 0.15) 51px,
         transparent 52px,
         transparent 100px
       ),
@@ -118,8 +109,8 @@
         90deg,
         transparent 0px,
         transparent 48px,
-        rgba(0, 255, 255, 0.08) 49px,
-        rgba(0, 255, 255, 0.08) 51px,
+        rgba(0, 255, 255, 0.12) 49px,
+        rgba(0, 255, 255, 0.12) 51px,
         transparent 52px,
         transparent 100px
       ),
@@ -128,8 +119,8 @@
         45deg,
         transparent 0px,
         transparent 68px,
-        rgba(0, 255, 255, 0.04) 69px,
-        rgba(0, 255, 255, 0.04) 71px,
+        rgba(0, 255, 255, 0.08) 69px,
+        rgba(0, 255, 255, 0.08) 71px,
         transparent 72px,
         transparent 140px
       ),
@@ -137,8 +128,8 @@
         -45deg,
         transparent 0px,
         transparent 68px,
-        rgba(0, 255, 255, 0.04) 69px,
-        rgba(0, 255, 255, 0.04) 71px,
+        rgba(0, 255, 255, 0.08) 69px,
+        rgba(0, 255, 255, 0.08) 71px,
         transparent 72px,
         transparent 140px
       ),
@@ -147,41 +138,44 @@
         0deg,
         transparent 0px,
         transparent 19px,
-        rgba(0, 255, 255, 0.02) 20px,
+        rgba(0, 255, 255, 0.04) 20px,
         transparent 21px
       ),
       repeating-linear-gradient(
         90deg,
         transparent 0px,
         transparent 19px,
-        rgba(0, 255, 255, 0.02) 20px,
+        rgba(0, 255, 255, 0.04) 20px,
         transparent 21px
       );
+    
     background-size: 100% 100%, 100px 100px, 100px 100px, 140px 140px, 140px 140px, 20px 20px, 20px 20px;
+    background-attachment: fixed;
     animation: circuit-flow 30s linear infinite;
   }
   
-  /* Circuit nodes and connection points */
-  body::after {
+  /* Circuit nodes and connection points overlay */
+  body::before {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
+    pointer-events: none;
     background-image: 
       /* Large connection nodes */
-      radial-gradient(circle at 100px 100px, rgba(0, 255, 255, 0.3) 1.5px, transparent 2px),
-      radial-gradient(circle at 200px 200px, rgba(0, 255, 255, 0.25) 1px, transparent 1.5px),
-      radial-gradient(circle at 50px 150px, rgba(0, 255, 255, 0.2) 1px, transparent 1.5px),
+      radial-gradient(circle at 100px 100px, rgba(0, 255, 255, 0.4) 2px, transparent 3px),
+      radial-gradient(circle at 200px 200px, rgba(0, 255, 255, 0.35) 1.5px, transparent 2.5px),
+      radial-gradient(circle at 50px 150px, rgba(0, 255, 255, 0.3) 1.5px, transparent 2.5px),
       /* Medium nodes */
-      radial-gradient(circle at 150px 50px, rgba(0, 255, 255, 0.15) 0.8px, transparent 1px),
-      radial-gradient(circle at 250px 150px, rgba(0, 255, 255, 0.15) 0.8px, transparent 1px),
+      radial-gradient(circle at 150px 50px, rgba(0, 255, 255, 0.25) 1px, transparent 1.5px),
+      radial-gradient(circle at 250px 150px, rgba(0, 255, 255, 0.25) 1px, transparent 1.5px),
       /* Small connection points */
-      radial-gradient(circle at 75px 75px, rgba(0, 255, 255, 0.1) 0.5px, transparent 0.8px),
-      radial-gradient(circle at 175px 125px, rgba(0, 255, 255, 0.1) 0.5px, transparent 0.8px),
-      radial-gradient(circle at 125px 175px, rgba(0, 255, 255, 0.1) 0.5px, transparent 0.8px);
+      radial-gradient(circle at 75px 75px, rgba(0, 255, 255, 0.2) 0.8px, transparent 1.2px),
+      radial-gradient(circle at 175px 125px, rgba(0, 255, 255, 0.2) 0.8px, transparent 1.2px),
+      radial-gradient(circle at 125px 175px, rgba(0, 255, 255, 0.2) 0.8px, transparent 1.2px);
     background-size: 
       200px 200px, 
       300px 300px, 
@@ -190,6 +184,12 @@
       180px 180px,
       100px 100px, 120px 120px, 140px 140px;
     animation: circuit-glow 12s ease-in-out infinite, circuit-pulse 8s ease-in-out infinite;
+  }
+  
+  /* Ensure content is above background */
+  #root {
+    position: relative;
+    z-index: 1;
   }
   
   /* Advanced animations and effects */
@@ -203,8 +203,8 @@
   }
   
   @keyframes circuit-glow {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.8; }
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
   }
   
   @keyframes circuit-pulse {
@@ -288,9 +288,9 @@
   /* Text effects */
   .text-electric {
     animation: electric-pulse 5s ease-in-out infinite;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Inter', sans-serif;
     font-weight: 900;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
   }
   
   .text-glow {
