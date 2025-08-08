@@ -36,7 +36,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="relative py-32 px-6 overflow-hidden">
+    <section id="about" className="relative min-h-screen flex items-center px-6 overflow-hidden">
       {/* Enhanced background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-animated-grid opacity-10" />
@@ -44,7 +44,7 @@ const AboutSection = () => {
         <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
       </div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 w-full py-20">
         {/* Section header with enhanced design */}
         <div className="text-center space-y-8 mb-20">
           <div className="space-y-4">

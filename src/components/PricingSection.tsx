@@ -51,7 +51,7 @@ const PricingSection = () => {
   ];
 
   return (
-    <section id="pricing" className="relative py-32 px-6 overflow-hidden bg-background-secondary">
+    <section id="pricing" className="relative min-h-screen flex items-center px-6 overflow-hidden bg-background-secondary">
       {/* Enhanced background effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-animated-grid opacity-15" />
@@ -60,7 +60,7 @@ const PricingSection = () => {
         <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 w-full py-20">
         {/* Section header */}
         <div className="text-center space-y-8 mb-20">
           <div className="space-y-4">

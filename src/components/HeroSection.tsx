@@ -19,7 +19,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Advanced background effects */}
       <div className="absolute inset-0">
         {/* Animated mesh gradient */}
@@ -56,10 +56,10 @@ const HeroSection = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 text-center space-y-8 px-6 max-w-7xl mx-auto">
+      <div className="relative z-10 text-center space-y-12 px-6 max-w-7xl mx-auto">
         {/* Hero text with enhanced styling */}
-        <div className="space-y-6">
-          <div className="space-y-3">
+        <div className="space-y-8">
+          <div className="space-y-4">
             <div className="inline-block px-6 py-2 border border-primary/50 rounded-full 
                           bg-primary/10 backdrop-blur-sm text-sm font-mono tracking-widest">
               <span className="text-primary">●</span> NEXT-GEN AI TECHNOLOGY
@@ -73,7 +73,7 @@ const HeroSection = () => {
             </h1>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-4">
+          <div className="max-w-4xl mx-auto space-y-6">
             <div className="h-px w-48 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto animate-glow-intense" />
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
@@ -96,21 +96,21 @@ const HeroSection = () => {
         </div>
 
         {/* Enhanced stats display */}
-        <div className="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div
                 key={feature.label}
-                className="card-premium p-4 text-center space-y-3 hover-electric group"
+                className="card-premium p-6 text-center space-y-4 hover-electric group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative">
-                  <Icon className="w-6 h-6 mx-auto text-primary group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute inset-0 w-6 h-6 mx-auto border border-primary/30 rounded-full animate-pulse" />
+                  <Icon className="w-8 h-8 mx-auto text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <div className="absolute inset-0 w-8 h-8 mx-auto border border-primary/30 rounded-full animate-pulse" />
                 </div>
-                <div className="space-y-1">
-                  <div className="text-2xl md:text-3xl font-black text-electric">
+                <div className="space-y-2">
+                  <div className="text-3xl md:text-4xl font-black text-electric">
                     {feature.value}
                   </div>
                   <div className="text-xs font-mono text-primary tracking-wider">
@@ -155,7 +155,7 @@ const HeroSection = () => {
                 <div className="w-px h-4 bg-border" />
                 <div className="flex items-center space-x-1">
                   <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
-                  <span className="text-muted-foreground">AI MODELS:</span>
+                  <span className="text-muted-foreground">AI:</span>
                   <span className="text-success font-bold">{aiModelsActive}/9</span>
                 </div>
               </div>

@@ -14,7 +14,7 @@ const TokenomicsSection = () => {
   ];
 
   return (
-    <section id="tokenomics" className="relative py-32 bg-background overflow-hidden">
+    <section id="tokenomics" className="relative min-h-screen flex items-center bg-background overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-animated-grid opacity-10" />
@@ -23,7 +23,7 @@ const TokenomicsSection = () => {
                         w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-20">
         {/* Section header */}
         <div className="text-center space-y-8 mb-20">
           <div className="space-y-6">
