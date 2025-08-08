@@ -19,40 +19,45 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-neural-network">
       {/* Advanced background effects */}
       <div className="absolute inset-0">
-        {/* Animated mesh gradient */}
-        <div className="absolute inset-0 opacity-30" 
-             style={{ background: 'var(--gradient-mesh)' }} />
+        {/* Quantum field overlay */}
+        <div className="absolute inset-0 bg-quantum-field opacity-40" />
         
-        {/* Grid pattern with animation */}
-        <div className="absolute inset-0 bg-animated-grid opacity-15" />
+        {/* Digital matrix pattern */}
+        <div className="absolute inset-0 bg-digital-matrix opacity-20" />
         
-        {/* Radial glow */}
-        <div className="absolute inset-0" 
-             style={{ background: 'var(--gradient-hero)' }} />
+        {/* Neural network particles */}
+        <div className="absolute inset-0 quantum-particles" />
         
-        {/* Dynamic geometric shapes */}
+        {/* Cyber scan lines */}
+        <div className="absolute inset-0 cyber-scan-line" />
+        
+        {/* Advanced geometric shapes */}
         <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute border border-primary/20 animate-float-complex cyber-border"
+              className="absolute border border-primary/30 animate-quantum-shift cyber-border-advanced neural-glow"
               style={{
-                width: `${40 + i * 20}px`,
-                height: `${40 + i * 20}px`,
+                width: `${30 + i * 15}px`,
+                height: `${30 + i * 15}px`,
                 left: `${5 + (i * 7) % 90}%`,
                 top: `${10 + (i * 11) % 80}%`,
-                animationDelay: `${i * 0.4}s`,
-                clipPath: i % 4 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 
-                         i % 4 === 1 ? 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' :
-                         i % 4 === 2 ? 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' :
-                         'none'
+                animationDelay: `${i * 0.3}s`,
+                clipPath: i % 5 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 
+                         i % 5 === 1 ? 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' :
+                         i % 5 === 2 ? 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' :
+                         i % 5 === 3 ? 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' :
+                         'circle(40% at 50% 50%)'
               }}
             />
           ))}
         </div>
+        
+        {/* Holographic overlay */}
+        <div className="absolute inset-0 bg-holographic opacity-30" />
       </div>
 
       {/* Main content */}

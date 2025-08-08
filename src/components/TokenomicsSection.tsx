@@ -14,13 +14,15 @@ const TokenomicsSection = () => {
   ];
 
   return (
-    <section id="tokenomics" className="relative min-h-screen flex items-center bg-background overflow-hidden">
+    <section id="tokenomics" className="relative min-h-screen flex items-center bg-holographic overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-animated-grid opacity-10" />
-        <div className="absolute inset-0" style={{ background: 'var(--gradient-mesh)' }} />
+        <div className="absolute inset-0 bg-quantum-field opacity-50" />
+        <div className="absolute inset-0 quantum-particles animate-neural-pulse" />
+        <div className="absolute inset-0 bg-digital-matrix opacity-25" />
+        <div className="absolute inset-0 cyber-scan-line" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                        w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+                        w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-neural-pulse neural-glow" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-20">
