@@ -1,0 +1,150 @@
+import { useState, useEffect } from "react";
+import { Menu, X, Zap, Activity, TrendingUp, CircleDollarSign, Blend, ScrollText } from "lucide-react";
+
+const Navigation = () => {
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { id: "home", label: "MAIN", icon: Zap },
+    { id: "about", label: "TECHNOLOGY", icon: Activity },
+    { id: "stats", label: "METRICS", icon: TrendingUp },
+    { id: "pricing", label: "PRICING", icon: CircleDollarSign },
+    { id: "modes", label: "MODES", icon: Blend },
+    { id: "tokenomics", label: "TOKENOMICS", icon: ScrollText },
+    // { id: "contact", label: "CONNECT", icon: Menu }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    setMobileMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-lg' 
+          : 'bg-transparent'
+      }`}>
+        <div className="mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Enhanced Logo */}
+            <div className="flex items-center space-x-3 group cursor-pointer">
+              <div className="relative">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-bright 
+                              rounded-lg rotate-45 animate-glow-intense group-hover:rotate-180 
+                              transition-transform duration-500" />
+                <div className="absolute inset-0 w-10 h-10 border border-primary/50 
+                              rounded-lg animate-pulse" />
+              </div>
+              <div className="space-y-0">
+                <span className="text-2xl font-black tracking-wider text-electric">BLUR</span>
+                <div className="text-xs font-mono text-muted-foreground tracking-widest">
+                  AI SCANNER
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {navItems.slice(0, 10).map((item) => {
+                const Icon = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`group flex items-center space-x-2 px-4 py-2 rounded-lg 
+                               transition-all duration-300 hover-electric ${
+                      activeSection === item.id 
+                        ? 'bg-primary/10 text-primary border border-primary/50' 
+                        : 'text-muted-foreground hover:text-primary'
+                    }`}
+                  >
+                    <Icon size={16} className="transition-transform group-hover:scale-110" />
+                    <span className="text-sm font-mono tracking-wide">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center space-x-4">
+              <div className="flex items-center space-x-2 text-xs font-mono text-muted-foreground">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                <span>LIVE</span>
+              </div>
+              <button className="cyber-border px-6 py-3 bg-gradient-to-r from-primary to-primary-bright 
+                               text-background font-mono tracking-wide text-sm font-bold
+                               hover:shadow-lg transform hover:scale-105 transition-all duration-300
+                               rounded-lg">
+                GET BLUR
+              </button>
+            </div>
+
+            {/* Mobile menu button */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 rounded-lg hover-electric border border-border"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Real-time status bar */}
+        <div className="border-t border-border bg-background/80 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-6 py-2">
+            <div className="flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center space-x-6">
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" />
+          <div className="relative flex flex-col items-center justify-center h-full space-y-8">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="group flex items-center space-x-4 px-8 py-4 rounded-lg 
+                           hover-electric text-2xl transition-all duration-300"
+                >
+                  <Icon size={24} className="transition-transform group-hover:scale-110" />
+                  <span className="font-mono tracking-wide">{item.label}</span>
+                </button>
+              );
+            })}
+            <button className="cyber-border px-8 py-4 bg-gradient-to-r from-primary to-primary-bright 
+                             text-background font-mono tracking-wide text-lg font-bold
+                             rounded-lg mt-8">
+              ACTIVATE SCANNER
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Navigation;
